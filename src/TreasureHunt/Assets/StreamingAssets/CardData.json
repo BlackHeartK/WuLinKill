@@ -1,0 +1,41 @@
+﻿{
+    "name": "CardData",
+    "Cards": [
+        {
+            "Type": "Attack",
+            "Element": "Fire",
+            "Damage": "2"
+        },
+        {
+            "Type": "Attack",
+            "Element": "Soil",
+            "Damage": "2"
+        },
+        {
+            "Type": "Attack",
+            "Element": "Water",
+            "Damage": "2"
+        },
+        {
+            "Type": "Attack",
+            "Element": "Wind",
+            "Damage": "2"
+        },
+        {
+            "Type": "Terrain",
+            "Element": "Fire"
+        },
+        {
+            "Type": "Terrain",
+            "Element": "Soil"
+        },        
+        {
+            "Type": "Terrain",
+            "Element": "Water"
+        },
+        {
+            "Type": "Terrain",
+            "Element": "Wind"
+        }
+    ]
+}

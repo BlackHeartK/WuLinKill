@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 06651b1b9a2f2254dbe286957a05aa29
+timeCreated: 1535025468
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: HanWangCM03
+  fontNames:
+  - HanWangCM03
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 3510538160
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 843e22027d0ce6522f81c0ac11626461
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: cb74c61e99056d12fddb87c5d2074894
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: d2e440d8ffe68354ba54aa25c314585b, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Perfabs/GameObject.prefab
+Dependencies: []

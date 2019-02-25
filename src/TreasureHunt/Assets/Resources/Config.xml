@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <Game>
+    <PlayerHandCardCountLimit>6</PlayerHandCardCountLimit>
+    <AI_Difficulty>0</AI_Difficulty>
+  </Game>
+  <Sound>
+    <BGM_Volume>1</BGM_Volume>
+    <SoundEffect_Volume>1</SoundEffect_Volume>
+    <SoundIsOn>True</SoundIsOn>
+  </Sound>
+  <Player>
+    <PlayerGetNewCard>2</PlayerGetNewCard>
+  </Player>
+  <Enemy>
+    <EnemyGetNewCard>2</EnemyGetNewCard>
+  </Enemy>
+</Config>
