@@ -105,38 +105,8 @@ public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
     /// <param name="eType">卡牌元素种类</param>
     public void SetCardProperty(CardType cType, ElementType eType,float damage)
     {
-        mCardType = cType;
-        mCardElement = eType;
         Dam = damage;
-        int i = 0;
-
-        switch (eType)
-        {
-            case ElementType.Fire:
-                i = 0;
-                break;
-            case ElementType.Soil:
-                i = 1;
-                break;
-            case ElementType.Water:
-                i = 2;
-                break;
-            case ElementType.Wind:
-                i = 3;
-                break;
-        }
-
-        switch (cType)
-        {
-            case CardType.AttackCard:
-                ui_TypeImage.color = cols[i];
-                ui_Dam.color = cols[i];
-                break;
-            case CardType.TerrainCard:
-                break;
-        }
-        ui_Image.sprite = eleSprites[i];
-
+        SetCardProperty(cType, eType);
     }
 
     /// <summary>

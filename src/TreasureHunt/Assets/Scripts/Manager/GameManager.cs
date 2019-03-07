@@ -6,6 +6,7 @@ using System.Xml;
 using System.Linq;
 using System.Xml.Linq;
 using System.IO;
+using XLua;
 
 /// <summary>
 /// 游戏主要流程逻辑管理
@@ -59,9 +60,12 @@ public class GameManager : Singleton<GameManager> {
     private string xmlFilePath;
     private int stageCount;
 
+    internal static LuaEnv luaEnv = new LuaEnv();
+
     /// <summary>
     /// 初始化
     /// </summary>
+    [LuaCallCSharp]
     public void Init()
 	{
         ReadConfig();
@@ -82,9 +86,16 @@ public class GameManager : Singleton<GameManager> {
 
         defenseSoundEffect = Resources.Load("Sound/Effect/防御2") as AudioClip;
 
+        luaEnv.DoString("require 'GameManager'");
+
         EventManager.Instance.SceneChangeEvent += ToReset;
         Debug.Log ("GameM Init Finished!");
 	}
+
+    private void OnApplicationQuit()
+    {
+        luaEnv.Dispose();
+    }
 
     /// <summary>
     /// 从XML文件中读取数据
@@ -217,6 +228,7 @@ public class GameManager : Singleton<GameManager> {
     /// 敌方攻击
     /// </summary>
     /// <param name="cardData"></param>
+    [Hotfix]
     public void EnemyAttack(CardData cardData)
     {
         int row = -1;
@@ -316,6 +328,7 @@ public class GameManager : Singleton<GameManager> {
     /// <param name="col"></param>
     /// <param name="str"></param>
     /// <param name="type"></param>
+    [Hotfix]
     void CheckAttackType(CardData cardData,int row,int col,out string str,out CardType type)
     {
         str = "";
@@ -373,6 +386,7 @@ public class GameManager : Singleton<GameManager> {
     /// <param name="col">列号</param>
     /// <param name="elementType">使用卡的元素类型</param>
     /// <param name="dam">伤害值</param>
+    [Hotfix]
     void AttackAlgo(int row,int col,ElementType elementType,float dam)
     {
         TerrainType terrainType = CanvasUI.battleBoxes[row, col].GetTerrainType;

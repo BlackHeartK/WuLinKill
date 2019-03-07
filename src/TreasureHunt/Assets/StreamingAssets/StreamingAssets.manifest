@@ -1,7 +1,10 @@
 ManifestFileVersion: 0
-CRC: 3876570411
+CRC: 3156133239
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: box
+      Name: test.assetbundle
+      Dependencies: {}
+    Info_1:
+      Name: game/version.assetbundle
       Dependencies: {}

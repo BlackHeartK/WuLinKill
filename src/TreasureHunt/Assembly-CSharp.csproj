@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_2_13;UNITY_2018_2;UNITY_2018;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_ANDROID;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_EVENT_QUEUE;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_2_13;UNITY_2018_2;UNITY_2018;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_ANDROID;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_EVENT_QUEUE;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;HOTFIX_ENABLE;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\AI\AIFSM_System.cs" />
     <Compile Include="Assets\Scripts\AI\EnemyUseCardState.cs" />
     <Compile Include="Assets\Scripts\AI\EnemyWaitState.cs" />
+    <Compile Include="Assets\Scripts\AssetCheckerManager.cs" />
     <Compile Include="Assets\Scripts\Card.cs" />
     <Compile Include="Assets\Scripts\CardData.cs" />
     <Compile Include="Assets\Scripts\Demo\Demo.cs" />
@@ -94,37 +95,155 @@
     <Compile Include="Assets\Scripts\UI\BattleInfoUIController.cs" />
     <Compile Include="Assets\Scripts\UI\CanvasUI.cs" />
     <Compile Include="Assets\Scripts\UI\DiffcutySettingUI.cs" />
+    <Compile Include="Assets\XLua\Examples\01_Helloworld\Helloworld.cs" />
+    <Compile Include="Assets\XLua\Examples\02_U3DScripting\LuaBehaviour.cs" />
+    <Compile Include="Assets\XLua\Examples\04_LuaObjectOrented\InvokeLua.cs" />
+    <Compile Include="Assets\XLua\Examples\05_NoGc\NoGc.cs" />
+    <Compile Include="Assets\XLua\Examples\06_Coroutine\Coroutine_Runner.cs" />
+    <Compile Include="Assets\XLua\Examples\06_Coroutine\CoroutineTest.cs" />
+    <Compile Include="Assets\XLua\Examples\07_AsyncTest\AsyncTest.cs" />
+    <Compile Include="Assets\XLua\Examples\07_AsyncTest\MessageBox.cs" />
+    <Compile Include="Assets\XLua\Examples\08_Hotfix\HotfixTest.cs" />
+    <Compile Include="Assets\XLua\Examples\08_Hotfix\HotfixTest2.cs" />
+    <Compile Include="Assets\XLua\Examples\08_Hotfix\StatefullTest.cs" />
+    <Compile Include="Assets\XLua\Examples\09_GenericMethod\Foo.cs" />
+    <Compile Include="Assets\XLua\Examples\09_GenericMethod\GenericMethodExample.cs" />
+    <Compile Include="Assets\XLua\Examples\10_SignatureLoader\SignatureLoaderTest.cs" />
+    <Compile Include="Assets\XLua\Examples\11_RawObject\RawObjectTest.cs" />
+    <Compile Include="Assets\XLua\Examples\12_ReImplementInLua\ReImplementInLua.cs" />
+    <Compile Include="Assets\XLua\Examples\ExampleGenConfig.cs" />
+    <Compile Include="Assets\XLua\Gen\BaseTestWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\CSCallLuaItfDBridge.cs" />
+    <Compile Include="Assets\XLua\Gen\DelegatesGensBridge.cs" />
+    <Compile Include="Assets\XLua\Gen\EnumWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\Foo1ChildWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\Foo1ParentWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\Foo2ChildWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\Foo2ParentWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\FooExtensionWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\FooWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\InvokeLuaICalcBridge.cs" />
+    <Compile Include="Assets\XLua\Gen\LuaBehaviourWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\PackUnpack.cs" />
+    <Compile Include="Assets\XLua\Gen\SystemCollectionsGenericList1SystemInt32Wrap.cs" />
+    <Compile Include="Assets\XLua\Gen\SystemCollectionsIEnumeratorBridge.cs" />
+    <Compile Include="Assets\XLua\Gen\SystemObjectWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\TutorialBaseClassWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\TutorialDrivenClassExtensionsWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\TutorialDrivenClassWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\TutorialICalcWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\TutorialPrivateOverrideClassWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineAnimationClipWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineAnimationCurveWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineBehaviourWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineBoundsWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineColorWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineComponentWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineDebugWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineGameObjectWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineKeyframeWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineLightWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineMathfWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineMonoBehaviourWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineObjectWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineParticleSystemWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineQuaternionWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineRay2DWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineRayWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineRendererWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineResourcesWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineSkinnedMeshRendererWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineTextAssetWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineTimeWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineTransformWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineVector2Wrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineVector3Wrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineVector4Wrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineWaitForSecondsWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\UnityEngineWWWWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\WrapPusher.cs" />
+    <Compile Include="Assets\XLua\Gen\XLuaGenAutoRegister.cs" />
+    <Compile Include="Assets\XLua\Gen\XLuaTestIExchangerBridge.cs" />
+    <Compile Include="Assets\XLua\Gen\XLuaTestMyStructWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\XLuaTestNoGcWrap.cs" />
+    <Compile Include="Assets\XLua\Gen\XLuaTestPeddingWrap.cs" />
+    <Compile Include="Assets\XLua\Src\CodeEmit.cs" />
+    <Compile Include="Assets\XLua\Src\CopyByValue.cs" />
+    <Compile Include="Assets\XLua\Src\DelegateBridge.cs" />
+    <Compile Include="Assets\XLua\Src\GenAttributes.cs" />
+    <Compile Include="Assets\XLua\Src\GenericDelegateBridge.cs" />
+    <Compile Include="Assets\XLua\Src\InternalGlobals.cs" />
+    <Compile Include="Assets\XLua\Src\LuaBase.cs" />
+    <Compile Include="Assets\XLua\Src\LuaDLL.cs" />
+    <Compile Include="Assets\XLua\Src\LuaEnv.cs" />
+    <Compile Include="Assets\XLua\Src\LuaException.cs" />
+    <Compile Include="Assets\XLua\Src\LuaFunction.cs" />
+    <Compile Include="Assets\XLua\Src\LuaTable.cs" />
+    <Compile Include="Assets\XLua\Src\MethodWarpsCache.cs" />
+    <Compile Include="Assets\XLua\Src\ObjectCasters.cs" />
+    <Compile Include="Assets\XLua\Src\ObjectPool.cs" />
+    <Compile Include="Assets\XLua\Src\ObjectTranslator.cs" />
+    <Compile Include="Assets\XLua\Src\ObjectTranslatorPool.cs" />
+    <Compile Include="Assets\XLua\Src\RawObject.cs" />
+    <Compile Include="Assets\XLua\Src\SignatureLoader.cs" />
+    <Compile Include="Assets\XLua\Src\StaticLuaCallbacks.cs" />
+    <Compile Include="Assets\XLua\Src\TemplateEngine\TemplateEngine.cs" />
+    <Compile Include="Assets\XLua\Src\TypeExtensions.cs" />
+    <Compile Include="Assets\XLua\Src\Utils.cs" />
+    <Compile Include="Assets\XLua\Tutorial\CSharpCallLua\CSCallLua.cs" />
+    <Compile Include="Assets\XLua\Tutorial\LoadLuaScript\ByFile\ByFile.cs" />
+    <Compile Include="Assets\XLua\Tutorial\LoadLuaScript\ByString\ByString.cs" />
+    <Compile Include="Assets\XLua\Tutorial\LoadLuaScript\Loader\CustomLoader.cs" />
+    <Compile Include="Assets\XLua\Tutorial\LuaCallCSharp\LuaCallCs.cs" />
+    <None Include="Assets\Scripts\Manager\Resources\AnimationManager.lua.txt" />
+    <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\message_box.lua.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Scripts\Demo\Resources\demomenu.lua.txt" />
+    <None Include="Assets\XLua\Examples\06_Coroutine\Resources\cs_coroutine.lua.txt" />
+    <None Include="Assets\XLua\Examples\02_U3DScripting\LuaTestScript.lua.txt" />
+    <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\async_test.lua.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\XLua\Tutorial\LoadLuaScript\ByFile\Resources\byfile.lua.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\XLua\Examples\06_Coroutine\Resources\coruntine_test.lua.txt" />
+    <None Include="Assets\XLua\Resources\xlua\util.lua.txt" />
+    <None Include="Assets\XLua\Gen\link.xml" />
+    <None Include="Assets\StreamingAssets\Version.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\XLua\Examples\03_UIEvent\ButtonInteraction.lua.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\StreamingAssets\Config.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\XLua\Gen\Resources\hotfix_id_map.lua.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\XLua\Resources\perf\profiler.lua.txt" />
     <None Include="Assets\DOTween\readme.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\XLua\Resources\perf\memory.lua.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Scripts\Manager\Resources\GameManager.lua.txt" />
     <None Include="Assets\Resources\Config.xml" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\XLua\CHANGELOG.txt" />
+    <None Include="Assets\XLua\Resources\tdr\tdr.lua.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>F:/UnityProject/TestProject/TreasureHunt/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>F:/WorkSpace/WulinKill/src/TreasureHunt/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>F:/UnityProject/TestProject/TreasureHunt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>F:/WorkSpace/WulinKill/src/TreasureHunt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>F:/UnityProject/TestProject/TreasureHunt/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>F:/WorkSpace/WulinKill/src/TreasureHunt/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>F:/UnityProject/TestProject/TreasureHunt/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>F:/WorkSpace/WulinKill/src/TreasureHunt/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>F:/Program Files/Unity2018/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -322,10 +441,10 @@
       <HintPath>F:/Program Files/Unity2018/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>F:/UnityProject/TestProject/TreasureHunt/Assets/DOTween/DOTween.dll</HintPath>
+      <HintPath>F:/WorkSpace/WulinKill/src/TreasureHunt/Assets/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="LitJson">
-      <HintPath>F:/UnityProject/TestProject/TreasureHunt/Assets/Plugins/LitJson.dll</HintPath>
+      <HintPath>F:/WorkSpace/WulinKill/src/TreasureHunt/Assets/Plugins/LitJson.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/Administrator/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>

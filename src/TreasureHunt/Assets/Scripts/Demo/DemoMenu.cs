@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XLua;
+using System;
 
 /// <summary>
 /// 主菜单
@@ -9,7 +11,49 @@ using UnityEngine.UI;
 /// Last Edit:2019/1/3
 /// </summary>
 public class DemoMenu : MonoBehaviour {
-    
+
+    public Text buildVersion;
+
+    internal static LuaEnv luaEnv = new LuaEnv();
+    private float GCInterval = 1;
+    private LuaTable scriptTable;
+    private Action setVersion;
+
+    [LuaCallCSharp]
+    private void Start()
+    {
+        scriptTable = luaEnv.NewTable();
+
+        LuaTable mate = luaEnv.NewTable();
+        mate.Set("_Index", luaEnv.Global);
+        scriptTable.SetMetaTable(mate);
+        mate.Dispose();
+
+        scriptTable.Set("self",this);
+        luaEnv.DoString("require 'DemoMenu'");
+        luaEnv.Global.Set("self", this);
+        luaEnv.Global.Get("setversion", out setVersion);
+
+        if (setVersion != null)
+        {
+            setVersion();
+        }
+    }
+
+    private void Update()
+    {
+        if (Time.time - LuaBehaviour.lastGCTime > GCInterval)
+        {
+            luaEnv.Tick();
+            LuaBehaviour.lastGCTime = Time.time;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        scriptTable.Dispose();
+    }
+
     /// <summary>
     /// 开始游戏
     /// </summary>
@@ -94,5 +138,13 @@ public class DemoMenu : MonoBehaviour {
     public void SetAllMucic(bool state)
     {
         AudioManager.Instance.AudioOpen = state;
+    }
+
+    /// <summary>
+    /// 弹出提示更新的窗口
+    /// </summary>
+    public void ShowUpdateWindow()
+    {
+        Debug.Log("Need Update!");
     }
 }

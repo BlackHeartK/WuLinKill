@@ -1,0 +1,5 @@
+local util = require "xlua.util"
+util.hotfix_ex(CS.GameManager,"EnemyAttack",function(self,cardData)
+	self:EnemyAttack(cardData)
+	print("Fix GameManager")
+end)

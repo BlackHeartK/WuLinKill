@@ -15,7 +15,22 @@ public class MyAssetbundle : EditorWindow {
 		windows.Show();
 	}
 
-	private string bundleName;
+    [MenuItem("Tools/GetAssetbundleDefault")]
+    static void GetAssetbundleDefault()
+    {
+        try
+        {
+            BuildPipeline.BuildAssetBundles(Application.streamingAssetsPath, BuildAssetBundleOptions.None, BuildTarget.Android);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("打包失败！");
+        }
+        Debug.Log("资源均已打包完成");
+        AssetDatabase.Refresh();
+    }
+    
+    private string bundleName;
 
 	void OnGUI()
 	{

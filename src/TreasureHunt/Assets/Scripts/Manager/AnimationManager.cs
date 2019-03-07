@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XLua;
+using UnityEngine.Networking;
 
 /// <summary>
 /// 播放动画管理
@@ -10,8 +12,18 @@ using UnityEngine.UI;
 /// </summary>
 public class AnimationManager : Singleton<AnimationManager> {
 
+    [LuaCallCSharp]
     private GameObject damagePrefab;
+    [LuaCallCSharp]
     private GameObject defenseEffect;
+    [LuaCallCSharp]
+    private GameObject waterEffect;
+    [LuaCallCSharp]
+    private GameObject windEffect;
+    [LuaCallCSharp]
+    private GameObject fireEffect;
+
+    private LuaEnv luaEnv = new LuaEnv();
 
     /// <summary>
     /// 初始化
@@ -20,20 +32,32 @@ public class AnimationManager : Singleton<AnimationManager> {
 	{
         damagePrefab = Resources.Load("Damage") as GameObject;
         defenseEffect = Resources.Load("DefenseEffect") as GameObject;
-        if (damagePrefab == null || defenseEffect == null)
+        waterEffect = Resources.Load("WaterEffect") as GameObject;
+        windEffect = Resources.Load("WindEffect") as GameObject;
+        fireEffect = Resources.Load("FireEffect") as GameObject;
+        if (damagePrefab == null || defenseEffect == null || waterEffect == null || windEffect == null)
         {
             Debug.LogError("未找到特效！");
-            return;
         }
         Debug.Log ("AnimationM Init Finished!");
-	}
 
-	/// <summary>
-	/// 激活攻击特效
-	/// </summary>
-	/// <param name="cardElementType">使用的卡片元素种类</param>
-	/// <param name="pos">动画释放位置</param>
-	public void PlayAttackAnime(ElementType cardData,float dam,Vector3 pos)
+        luaEnv.Global.Set("self", this);
+        luaEnv.DoString("require 'AnimationManager'");
+
+    }
+
+    private void OnApplicationQuit()
+    {
+        luaEnv.Dispose();
+    }
+
+    /// <summary>
+    /// 激活攻击特效
+    /// </summary>
+    /// <param name="cardElementType">使用的卡片元素种类</param>
+    /// <param name="pos">动画释放位置</param>
+    [Hotfix]
+    public void PlayAttackAnime(ElementType etype,float dam,Vector3 pos)
 	{
         //Debug.Log("攻击伤害动画释放位置：" + pos);
         GameObject go = Instantiate(damagePrefab) as GameObject;
@@ -47,6 +71,7 @@ public class AnimationManager : Singleton<AnimationManager> {
     /// 激活防御特效
     /// </summary>
     /// <param name="pos"></param>
+    [Hotfix]
     public void PlayDefenseAnime(Vector3 pos)
     {
         GameObject go = Instantiate(defenseEffect) as GameObject;

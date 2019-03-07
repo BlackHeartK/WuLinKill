@@ -1,0 +1,4 @@
+function setversion()
+	self.buildVersion.text = "Ver 0.98"
+	CS.UnityEngine.Debug.Log('Finish')
+end

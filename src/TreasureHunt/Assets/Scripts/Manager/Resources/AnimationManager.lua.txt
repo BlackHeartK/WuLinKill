@@ -1,0 +1,25 @@
+
+xlua.hotfix(CS.AnimationManager,"PlayAttackAnime",function(self,etype,dam,pos,effect)
+	
+	if (etype==CS.ElementType.Water) then
+		local water = CS.UnityEngine.Object.Instantiate(self.waterEffect)
+		water.transform:SetParent(CS.CanvasUI.trans)
+		water.transform.position = pos
+	elseif (etype==CS.ElementType.Wind) then
+		local wind = CS.UnityEngine.Object.Instantiate(self.windEffect)
+		wind.transform:SetParent(CS.CanvasUI.trans)
+		wind.transform.position = pos
+	elseif (etype==CS.ElementType.Fire) then
+		local fire = CS.UnityEngine.Object.Instantiate(self.fireEffect)
+		fire.transform:SetParent(CS.CanvasUI.trans)
+		fire.transform.position = pos
+	end
+	
+	local go = CS.UnityEngine.Object.Instantiate(self.damagePrefab)
+	go.transform:SetParent(CS.CanvasUI.trans)
+    go.transform.position = pos
+    go:GetComponentInChildren(typeof(CS.UnityEngine.UI.Text)).text = -dam
+	
+	print("New Attack")
+end
+)

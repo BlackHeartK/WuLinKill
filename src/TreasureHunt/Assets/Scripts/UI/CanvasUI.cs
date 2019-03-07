@@ -181,7 +181,6 @@ public class CanvasUI : MonoBehaviour {
         }
         else
         {
-            Vector3[] v3 = new Vector3[n];
             Vector3 delat = (lastHandCardTrans.localPosition - firstHandCardTrans.localPosition) / (n - 1);
             for (int i = 0; i < n; i++)
             {
