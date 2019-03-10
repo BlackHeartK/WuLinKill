@@ -6,8 +6,6 @@ using System.IO;
 
 public class AssetCheckerManager : Singleton<AssetCheckerManager> {
     
-    public DemoMenu demoMenu;
-
     private void Start()
     {
         StartCoroutine(CheckNewVersion());
@@ -34,7 +32,6 @@ public class AssetCheckerManager : Singleton<AssetCheckerManager> {
         { }
         if (server.text != verTex)
         {
-            demoMenu.ShowUpdateWindow();
             LoadAssetBundles();
             UpdateVersion(server.text);
         }

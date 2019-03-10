@@ -27,6 +27,8 @@ public class EventManager : Singleton<EventManager> {
     public event EnemyGetCardEventHandler EnemyGetCard;
     public delegate void EnemyUseCardEventHandler();
     public event EnemyUseCardEventHandler EnemyUseCard;
+    public delegate void DorpCardEventHandler();
+    public event DorpCardEventHandler DorpCardEvent;
 
     //攻击事件
     public delegate void AttackEventHandler(int boxRow,int boxCol,float damage);
@@ -97,6 +99,17 @@ public class EventManager : Singleton<EventManager> {
         if (EnemyAttackEvent != null)
         {
             EnemyAttackEvent(boxRow, boxCol, dam);
+        }
+    }
+
+    /// <summary>
+    /// 触发丢弃卡牌事件
+    /// </summary>
+    public void DorpCard()
+    {
+        if (DorpCardEvent != null)
+        {
+            DorpCardEvent();
         }
     }
 

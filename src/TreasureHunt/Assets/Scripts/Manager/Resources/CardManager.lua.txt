@@ -1,0 +1,20 @@
+xlua.hotfix("CardManager","GetNewCard",function()
+	local cardCount = 0;
+	if (CS.GameManager.Instance.battleSatge == CS.GameManager.BattleStage.PlayerGetCard) then
+        cardCount = CS.GameManager.Instance.playerGetNewCardCount;
+    end
+	
+	if (CS.GameManager.Instance.battleSatge == CS.GameManager.BattleStage.EnemyGetCard) then
+		cardCount = CS.GameManager.Instance.enemyGetNewCardCount;
+	end
+	
+	local newCard = {};
+	for i=0,cardCount,1 do
+		local ran = CS.UnityEngine.Random.Range(0, self.cardData.Count);
+		ran = CS.UnityEngine.Mathf.FloorToInt(ran);
+		--print(ran);
+		newCard[i] = self.cardData[ran];
+	end
+    return newCard;
+end
+)

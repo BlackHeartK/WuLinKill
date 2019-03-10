@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Effect
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 2
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: bc966faf5b7190b4dae3a31222d75b8c, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 20509fd0588f98c4b9bf2e0109fbcf0c, type: 3}
+  - {fileID: 21300000, guid: fb971321393813a409af8e807186c7ad, type: 3}
+  - {fileID: 21300000, guid: 1b2e00c15adf406478891820ea49f0a1, type: 3}
+  - {fileID: 21300000, guid: 277536d51805b4447a54f76781900336, type: 3}
+  - {fileID: 21300000, guid: 9fe738e5c246e6a4d9e76e812610bbab, type: 3}
+  - {fileID: 21300008, guid: 7cf8da06cf06cfb42a37c29c6c1f75b4, type: 3}
+  - {fileID: 21300010, guid: 7cf8da06cf06cfb42a37c29c6c1f75b4, type: 3}
+  - {fileID: 21300012, guid: 7cf8da06cf06cfb42a37c29c6c1f75b4, type: 3}
+  - {fileID: 21300014, guid: 7cf8da06cf06cfb42a37c29c6c1f75b4, type: 3}
+  - {fileID: 21300000, guid: 7cf8da06cf06cfb42a37c29c6c1f75b4, type: 3}
+  - {fileID: 21300002, guid: 7cf8da06cf06cfb42a37c29c6c1f75b4, type: 3}
+  - {fileID: 21300004, guid: 7cf8da06cf06cfb42a37c29c6c1f75b4, type: 3}
+  - {fileID: 21300006, guid: 7cf8da06cf06cfb42a37c29c6c1f75b4, type: 3}
+  - {fileID: 21300016, guid: 7cf8da06cf06cfb42a37c29c6c1f75b4, type: 3}
+  - {fileID: 21300018, guid: 7cf8da06cf06cfb42a37c29c6c1f75b4, type: 3}
+  - {fileID: 21300000, guid: 5c0123b6cd9bfa04d9fc7bc950cafa02, type: 3}
+  - {fileID: 21300000, guid: bab2b3b6ee77ce74da20fad42952c06c, type: 3}
+  - {fileID: 21300000, guid: 5e28aa186f5ac3941826d7dfd1cdfca8, type: 3}
+  - {fileID: 21300000, guid: 8a31e6d83c7becf4298b398d89b48937, type: 3}
+  - {fileID: 21300000, guid: 07fc93f851033a943b15eb8d4d1f5045, type: 3}
+  - {fileID: 21300000, guid: c24784090e7b24c43bc8d6d1fa1b6370, type: 3}
+  - {fileID: 21300000, guid: b1a523d95e9ee0d45bfc8517612adbc8, type: 3}
+  - {fileID: 21300000, guid: 143e2a1b2f6a3d14d9bd275b3ca4ca81, type: 3}
+  - {fileID: 21300000, guid: 9835b9dbf87b4b541bc6f45968c4a0b0, type: 3}
+  - {fileID: 21300000, guid: 35b4167c6b16ea444b27090f74a32630, type: 3}
+  - {fileID: 21300000, guid: 1587a70d27145aa4a8267c25626aafd0, type: 3}
+  - {fileID: 21300000, guid: cd4a2e2d45ada4c4f87b782336ef85ca, type: 3}
+  - {fileID: 21300000, guid: 9e6034cdb0a96f0468bb0844aaa57f3e, type: 3}
+  - {fileID: 21300000, guid: 1bbe3dcd1e3eece4eb4d3639fa81e226, type: 3}
+  - {fileID: 21300000, guid: a0dec81e01c2ce94c843f30500633c21, type: 3}
+  - {fileID: 21300000, guid: c3c8239e35f4e4c42b012fdca23285d9, type: 3}
+  - {fileID: 21300000, guid: 1d3678df981cd944a9269b4bb0ab9088, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\u706B3"
+  - soil01
+  - "\u706B0"
+  - "DNF\u7279\u6548\u5E8F\u5217\u5E27\u7D20\u6750\u53053338\u5957-\u9B54\u6CD5\u5149\u6548-0_\u7231\u7ED9\u7F51_aigei_com"
+  - "\u706B2"
+  - "\u6B27\u7F8E\u9B54\u5E7B\u98CE\u300A\u9F99\u795E\u6218\u8BB0\u300B\u5168\u5957UI\u8D44\u6E90-\u6728\u5934\u653B\u51FB\u6548\u679C(woodA_\u7231\u7ED9\u7F51_aigei_com_4"
+  - "\u6B27\u7F8E\u9B54\u5E7B\u98CE\u300A\u9F99\u795E\u6218\u8BB0\u300B\u5168\u5957UI\u8D44\u6E90-\u6728\u5934\u653B\u51FB\u6548\u679C(woodA_\u7231\u7ED9\u7F51_aigei_com_5"
+  - "\u6B27\u7F8E\u9B54\u5E7B\u98CE\u300A\u9F99\u795E\u6218\u8BB0\u300B\u5168\u5957UI\u8D44\u6E90-\u6728\u5934\u653B\u51FB\u6548\u679C(woodA_\u7231\u7ED9\u7F51_aigei_com_6"
+  - "\u6B27\u7F8E\u9B54\u5E7B\u98CE\u300A\u9F99\u795E\u6218\u8BB0\u300B\u5168\u5957UI\u8D44\u6E90-\u6728\u5934\u653B\u51FB\u6548\u679C(woodA_\u7231\u7ED9\u7F51_aigei_com_7"
+  - "\u6B27\u7F8E\u9B54\u5E7B\u98CE\u300A\u9F99\u795E\u6218\u8BB0\u300B\u5168\u5957UI\u8D44\u6E90-\u6728\u5934\u653B\u51FB\u6548\u679C(woodA_\u7231\u7ED9\u7F51_aigei_com_0"
+  - "\u6B27\u7F8E\u9B54\u5E7B\u98CE\u300A\u9F99\u795E\u6218\u8BB0\u300B\u5168\u5957UI\u8D44\u6E90-\u6728\u5934\u653B\u51FB\u6548\u679C(woodA_\u7231\u7ED9\u7F51_aigei_com_1"
+  - "\u6B27\u7F8E\u9B54\u5E7B\u98CE\u300A\u9F99\u795E\u6218\u8BB0\u300B\u5168\u5957UI\u8D44\u6E90-\u6728\u5934\u653B\u51FB\u6548\u679C(woodA_\u7231\u7ED9\u7F51_aigei_com_2"
+  - "\u6B27\u7F8E\u9B54\u5E7B\u98CE\u300A\u9F99\u795E\u6218\u8BB0\u300B\u5168\u5957UI\u8D44\u6E90-\u6728\u5934\u653B\u51FB\u6548\u679C(woodA_\u7231\u7ED9\u7F51_aigei_com_3"
+  - "\u6B27\u7F8E\u9B54\u5E7B\u98CE\u300A\u9F99\u795E\u6218\u8BB0\u300B\u5168\u5957UI\u8D44\u6E90-\u6728\u5934\u653B\u51FB\u6548\u679C(woodA_\u7231\u7ED9\u7F51_aigei_com_8"
+  - "\u6B27\u7F8E\u9B54\u5E7B\u98CE\u300A\u9F99\u795E\u6218\u8BB0\u300B\u5168\u5957UI\u8D44\u6E90-\u6728\u5934\u653B\u51FB\u6548\u679C(woodA_\u7231\u7ED9\u7F51_aigei_com_9"
+  - "DNF\u7279\u6548\u5E8F\u5217\u5E27\u7D20\u6750\u53053338\u5957-\u9B54\u6CD5\u5149\u6548-5_\u7231\u7ED9\u7F51_aigei_com"
+  - soil03
+  - soil00
+  - soil05
+  - "\u706B4"
+  - boom
+  - "DNF\u7279\u6548\u5E8F\u5217\u5E27\u7D20\u6750\u53053338\u5957-\u9B54\u6CD5\u5149\u6548-4_\u7231\u7ED9\u7F51_aigei_com"
+  - "DNF\u7279\u6548\u5E8F\u5217\u5E27\u7D20\u6750\u53053338\u5957-\u9B54\u6CD5\u5149\u6548-3_\u7231\u7ED9\u7F51_aigei_com"
+  - "DNF\u7279\u6548\u5E8F\u5217\u5E27\u7D20\u6750\u53053338\u5957-\u9B54\u6CD5\u5149\u6548-2_\u7231\u7ED9\u7F51_aigei_com"
+  - "DNF\u7279\u6548\u5E8F\u5217\u5E27\u7D20\u6750\u53053338\u5957-\u9B54\u6CD5\u5149\u6548-6_\u7231\u7ED9\u7F51_aigei_com"
+  - "DNF\u7279\u6548\u5E8F\u5217\u5E27\u7D20\u6750\u53053338\u5957-\u9B54\u6CD5\u5149\u6548-8_\u7231\u7ED9\u7F51_aigei_com"
+  - soil02
+  - "\u706B1"
+  - "\u706B5"
+  - "DNF\u7279\u6548\u5E8F\u5217\u5E27\u7D20\u6750\u53053338\u5957-\u9B54\u6CD5\u5149\u6548-1_\u7231\u7ED9\u7F51_aigei_com"
+  - "DNF\u7279\u6548\u5E8F\u5217\u5E27\u7D20\u6750\u53053338\u5957-\u9B54\u6CD5\u5149\u6548-7_\u7231\u7ED9\u7F51_aigei_com"
+  - soil04
+  m_Tag: Effect
+  m_IsVariant: 0

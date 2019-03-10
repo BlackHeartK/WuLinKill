@@ -18,11 +18,13 @@ public class UIManager : Singleton<UIManager> {
 		Emeny,
 		BattleArea,
 		OverPlayerTurnButton,
+        DorpButton
 	}
 
 	public Dictionary<UiArea,GameObject> uiDictionary = new Dictionary<UiArea, GameObject>();
-    public List<GameObject> playerHandCardUI = new List<GameObject>();
+    
     public GameObject currentSelectCardUI;
+    public List<GameObject> playerHandCardUI = new List<GameObject>();
 
     /// <summary>
     /// 初始化
@@ -33,12 +35,12 @@ public class UIManager : Singleton<UIManager> {
         Debug.Log ("UiM Init Finished!");
 	}
 
-	/// <summary>
-	/// 激活或关闭指定UI
-	/// </summary>
-	/// <param name="uia">指定的UI</param>
-	/// <param name="state">If set to <c>true</c> 是否为激活</param>
-	public void EnableOrDisableUI(UiArea uia,bool state)
+    /// <summary>
+    /// 激活或关闭指定UI
+    /// </summary>
+    /// <param name="uia">指定的UI</param>
+    /// <param name="state">If set to <c>true</c> 是否为激活</param>
+    public void EnableOrDisableUI(UiArea uia,bool state)
 	{
 		GameObject ui;
 		try

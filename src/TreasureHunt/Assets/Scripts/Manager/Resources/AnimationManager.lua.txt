@@ -13,6 +13,10 @@ xlua.hotfix(CS.AnimationManager,"PlayAttackAnime",function(self,etype,dam,pos,ef
 		local fire = CS.UnityEngine.Object.Instantiate(self.fireEffect)
 		fire.transform:SetParent(CS.CanvasUI.trans)
 		fire.transform.position = pos
+	elseif (etype==CS.ElementType.Soil) then
+		local soil = CS.UnityEngine.Object.Instantiate(self.soilEffect)
+		soil.transform:SetParent(CS.CanvasUI.trans)
+		soil.transform.position = pos
 	end
 	
 	local go = CS.UnityEngine.Object.Instantiate(self.damagePrefab)

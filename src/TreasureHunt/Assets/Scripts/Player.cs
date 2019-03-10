@@ -71,6 +71,7 @@ public class Player : MonoBehaviour {
         for (int i = 0; i < cardDatas.Length; i++)
         {
             handCards.Add(cardDatas[i]);
+            GameManager.Instance.CurHandCardCount++;
         }
     }
 

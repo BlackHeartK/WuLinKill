@@ -40,7 +40,18 @@ public class GameManager : Singleton<GameManager> {
     public int enemyGetNewCardCount = 2;//敌方新回合抽卡数
     public float playerExtraDamage = 0;//玩家额外伤害
     public float enemyExtraDamage = 0;//敌方额外伤害
-    public int AI_Difficulty = 0;
+    public int AI_Difficulty = 0;//AI难度 0 or 1
+    public readonly int maxHandCardCount = 5;//最大手牌持有数
+    public bool canDorp;
+    private int curHandCardCount;//当前手牌有效卡牌数
+    public int CurHandCardCount
+    {
+        get { return curHandCardCount; }
+        set
+        {
+            curHandCardCount = value;
+        }
+    }
 
     private bool gameover;
     public bool GameOver

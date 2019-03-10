@@ -12,6 +12,7 @@ using DG.Tweening;
 public class CanvasUI : MonoBehaviour {
 
 	public GameObject playerOverTurnButton;
+    public GameObject dorpButton;
     public Text battleInfoText;
     public GameObject vectoryUI;
     public GameObject failUI;
@@ -44,6 +45,7 @@ public class CanvasUI : MonoBehaviour {
 
 		UIManager.Instance.uiDictionary.Add (UIManager.UiArea.CanvasRoot, gameObject);
 		UIManager.Instance.uiDictionary.Add (UIManager.UiArea.OverPlayerTurnButton,playerOverTurnButton);
+        UIManager.Instance.uiDictionary.Add (UIManager.UiArea.DorpButton, dorpButton);
         EventManager.Instance.PlayerGetCard += PlayerGetCardAnime;
         EventManager.Instance.UpdateBattleInfo += UpdateBattleInfo;
         EventManager.Instance.PlayerAttackEvent += AttackTrigger;
@@ -223,6 +225,5 @@ public class CanvasUI : MonoBehaviour {
         focusPlane.SetActive(true);
         failUI.SetActive(true);
     }
-
 
 }

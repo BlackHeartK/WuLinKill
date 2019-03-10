@@ -38,8 +38,18 @@ public class Demo : MonoBehaviour {
     /// </summary>
     public void PlayerOverTurn()
     {
-        EventManager.Instance.UpdateBattleInfo("玩家回合结束");
-        GameManager.Instance.NextStage();
+        if (UIManager.Instance.playerHandCardUI.Count <= GameManager.Instance.maxHandCardCount)
+        {
+            GameManager.Instance.canDorp = false;
+            EventManager.Instance.UpdateBattleInfo("玩家回合结束");
+            GameManager.Instance.NextStage();
+        }
+        else
+        {
+            GameManager.Instance.canDorp = true;
+            UIManager.Instance.uiDictionary[UIManager.UiArea.DorpButton].SetActive(true);
+            UIManager.Instance.uiDictionary[UIManager.UiArea.OverPlayerTurnButton].SetActive(false);
+        }
     }
 
     /// <summary>
@@ -49,5 +59,18 @@ public class Demo : MonoBehaviour {
     public void SetVoice(AudioClip clip)
     {
         AudioManager.Instance.PlayVoice(clip);
+    }
+
+    /// <summary>
+    /// 确认丢弃卡牌
+    /// </summary>
+    public void ConfrimDorp()
+    {
+        EventManager.Instance.DorpCard();
+        if (UIManager.Instance.playerHandCardUI.Count <= GameManager.Instance.maxHandCardCount)
+        {
+            UIManager.Instance.uiDictionary[UIManager.UiArea.OverPlayerTurnButton].SetActive(true);
+            UIManager.Instance.uiDictionary[UIManager.UiArea.DorpButton].SetActive(false);
+        }
     }
 }

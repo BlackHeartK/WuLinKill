@@ -5,10 +5,12 @@ using System.IO;
 using System;
 //using LitJson;
 using SimpleJSON;
+using XLua;
 
 /// <summary>
 /// 卡片种类
 /// </summary>
+[LuaCallCSharp]
 public enum CardType
 {
     none,
@@ -19,6 +21,7 @@ public enum CardType
 /// <summary>
 /// 元素种类
 /// </summary>
+[LuaCallCSharp]
 public enum ElementType
 {
     none,
@@ -43,6 +46,8 @@ public class CardManager : Singleton<CardManager> {
     public Dictionary<ElementType, TerrainType> elementToTerrainType = new Dictionary<ElementType, TerrainType>();
     public Dictionary<ElementType, TerrainType> restraintTable = new Dictionary<ElementType, TerrainType>();
 
+    private LuaEnv luaEnv = new LuaEnv();
+
     /// <summary>
     /// 卡片数据管理初始化
     /// </summary>
@@ -58,6 +63,9 @@ public class CardManager : Singleton<CardManager> {
         restraintTable.Add(ElementType.Soil, TerrainType.lake);
         restraintTable.Add(ElementType.Water, TerrainType.desert);
         restraintTable.Add(ElementType.Wind, TerrainType.mountain);
+
+        luaEnv.Global.Set("self", Instance);
+        luaEnv.DoString("require 'CardManager'");
         Debug.Log ("CardM Init Finished!");
 	}
 
@@ -167,6 +175,7 @@ public class CardManager : Singleton<CardManager> {
     /// 从卡组中获取新卡
     /// </summary>
     /// <returns></returns>
+    [Hotfix]
     public CardData[] GetNewCard()
     {
         int cardCount = 0;

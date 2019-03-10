@@ -37,6 +37,8 @@ namespace XLua
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Ray>(translator.PushUnityEngineRay, translator.Get, translator.UpdateUnityEngineRay);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Bounds>(translator.PushUnityEngineBounds, translator.Get, translator.UpdateUnityEngineBounds);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Ray2D>(translator.PushUnityEngineRay2D, translator.Get, translator.UpdateUnityEngineRay2D);
+				translator.RegisterPushAndGetAndUpdate<CardType>(translator.PushCardType, translator.Get, translator.UpdateCardType);
+				translator.RegisterPushAndGetAndUpdate<ElementType>(translator.PushElementType, translator.Get, translator.UpdateElementType);
 				translator.RegisterPushAndGetAndUpdate<XLuaTest.MyEnum>(translator.PushXLuaTestMyEnum, translator.Get, translator.UpdateXLuaTestMyEnum);
 				translator.RegisterPushAndGetAndUpdate<Tutorial.TestEnum>(translator.PushTutorialTestEnum, translator.Get, translator.UpdateTutorialTestEnum);
 				translator.RegisterPushAndGetAndUpdate<Tutorial.DrivenClass.TestEnumInner>(translator.PushTutorialDrivenClassTestEnumInner, translator.Get, translator.UpdateTutorialDrivenClassTestEnumInner);
@@ -770,6 +772,174 @@ namespace XLua
             }
         }
         
+        int CardType_TypeID = -1;
+		int CardType_EnumRef = -1;
+        
+        public void PushCardType(RealStatePtr L, CardType val)
+        {
+            if (CardType_TypeID == -1)
+            {
+			    bool is_first;
+                CardType_TypeID = getTypeId(L, typeof(CardType), out is_first);
+				
+				if (CardType_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(CardType));
+				    CardType_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, CardType_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, CardType_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for CardType ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, CardType_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out CardType val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != CardType_TypeID)
+				{
+				    throw new Exception("invalid userdata for CardType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for CardType");
+                }
+				val = (CardType)e;
+                
+            }
+            else
+            {
+                val = (CardType)objectCasters.GetCaster(typeof(CardType))(L, index, null);
+            }
+        }
+		
+        public void UpdateCardType(RealStatePtr L, int index, CardType val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != CardType_TypeID)
+				{
+				    throw new Exception("invalid userdata for CardType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for CardType ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
+        int ElementType_TypeID = -1;
+		int ElementType_EnumRef = -1;
+        
+        public void PushElementType(RealStatePtr L, ElementType val)
+        {
+            if (ElementType_TypeID == -1)
+            {
+			    bool is_first;
+                ElementType_TypeID = getTypeId(L, typeof(ElementType), out is_first);
+				
+				if (ElementType_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(ElementType));
+				    ElementType_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, ElementType_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, ElementType_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for ElementType ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, ElementType_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out ElementType val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != ElementType_TypeID)
+				{
+				    throw new Exception("invalid userdata for ElementType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for ElementType");
+                }
+				val = (ElementType)e;
+                
+            }
+            else
+            {
+                val = (ElementType)objectCasters.GetCaster(typeof(ElementType))(L, index, null);
+            }
+        }
+		
+        public void UpdateElementType(RealStatePtr L, int index, ElementType val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != ElementType_TypeID)
+				{
+				    throw new Exception("invalid userdata for ElementType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for ElementType ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
         int XLuaTestMyEnum_TypeID = -1;
 		int XLuaTestMyEnum_EnumRef = -1;
         
@@ -1099,6 +1269,18 @@ namespace XLua
 				translator.PushUnityEngineRay2D(L, array[index]);
 				return true;
 			}
+			else if (type == typeof(CardType[]))
+			{
+			    CardType[] array = obj as CardType[];
+				translator.PushCardType(L, array[index]);
+				return true;
+			}
+			else if (type == typeof(ElementType[]))
+			{
+			    ElementType[] array = obj as ElementType[];
+				translator.PushElementType(L, array[index]);
+				return true;
+			}
 			else if (type == typeof(XLuaTest.MyEnum[]))
 			{
 			    XLuaTest.MyEnum[] array = obj as XLuaTest.MyEnum[];
@@ -1186,6 +1368,18 @@ namespace XLua
 			else if (type == typeof(UnityEngine.Ray2D[]))
 			{
 			    UnityEngine.Ray2D[] array = obj as UnityEngine.Ray2D[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(CardType[]))
+			{
+			    CardType[] array = obj as CardType[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(ElementType[]))
+			{
+			    ElementType[] array = obj as ElementType[];
 				translator.Get(L, obj_idx, out array[array_idx]);
 				return true;
 			}

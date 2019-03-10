@@ -198,7 +198,9 @@ public class BattleBox : MonoBehaviour,IDropHandler {
         cd.eType = card.cardElement;
         cd.dam = card.Dam;
         GameManager.Instance.PlayerAttack(GetIndex, cd);
+        GameManager.Instance.CurHandCardCount--;
         card.DestroySelf();
+        
     }
     
 }

@@ -9,13 +9,32 @@ using UnityEngine.EventSystems;
 /// Craete:2018/9
 /// Last Edit:2019/1/7
 /// </summary>
-public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler {
+public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler,IPointerDownHandler {
 
     private CardType mCardType;
     private ElementType mCardElement;
     public Image ui_Image;
     public RawImage ui_TypeImage;
     public Sprite[] eleSprites;
+
+    private bool willDorp;
+    public bool WillDorp
+    {
+        set
+        {
+            if (value)
+            {
+                if (GameManager.Instance.CurHandCardCount <= GameManager.Instance.maxHandCardCount)
+                { return; }
+                transform.localPosition += Vector3.up * 30;
+            }
+            else
+            {
+                transform.localPosition -= Vector3.up * 30;
+            }
+            willDorp = value;
+        }
+    }
 
     private Vector3 beginDragTrns;
 
@@ -124,11 +143,21 @@ public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
                 break;
             }
         }
-        
     }
 
     /// <summary>
-    /// 当结束拖拽
+    /// 被丢弃
+    /// </summary>
+    public void BeDorp()
+    {
+        if (willDorp && GameManager.Instance.canDorp)
+        {
+            DestroySelf();
+        }
+    }
+
+    /// <summary>
+    /// 当结束拖拽卡牌
     /// </summary>
     /// <param name="eventData"></param>
     public void OnEndDrag(PointerEventData eventData)
@@ -141,7 +170,7 @@ public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
     }
 
     /// <summary>
-    /// 当开始拖拽
+    /// 当开始拖拽卡牌
     /// </summary>
     /// <param name="eventData"></param>
     public void OnBeginDrag(PointerEventData eventData)
@@ -165,7 +194,7 @@ public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
     }
 
     /// <summary>
-    /// 当正在拖拽
+    /// 当正在拖拽卡牌
     /// </summary>
     /// <param name="eventData"></param>
     public void OnDrag(PointerEventData eventData)
@@ -178,4 +207,37 @@ public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
             cardRT.position = mousePosInWorld;
         }
     }
+
+    /// <summary>
+    /// 当点击卡牌
+    /// </summary>
+    /// <param name="eventData"></param>
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (UIManager.Instance.playerHandCardUI.Count > GameManager.Instance.maxHandCardCount && GameManager.Instance.canDorp)
+        {
+            if (!willDorp)
+            {
+                WillDorp = true;
+                GameManager.Instance.CurHandCardCount--;
+            }
+            else
+            {
+                WillDorp = false;
+                GameManager.Instance.CurHandCardCount++;
+            }
+        }
+    }
+
+    #region Unity
+    void Awake()
+    {
+        EventManager.Instance.DorpCardEvent += BeDorp;
+    }
+
+    void OnDestroy()
+    {
+        EventManager.Instance.DorpCardEvent -= BeDorp;
+    }
+    #endregion
 }

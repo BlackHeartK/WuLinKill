@@ -22,7 +22,9 @@ public class AnimationManager : Singleton<AnimationManager> {
     private GameObject windEffect;
     [LuaCallCSharp]
     private GameObject fireEffect;
-
+    [LuaCallCSharp]
+    private GameObject soilEffect;
+    
     private LuaEnv luaEnv = new LuaEnv();
 
     /// <summary>
@@ -35,6 +37,7 @@ public class AnimationManager : Singleton<AnimationManager> {
         waterEffect = Resources.Load("WaterEffect") as GameObject;
         windEffect = Resources.Load("WindEffect") as GameObject;
         fireEffect = Resources.Load("FireEffect") as GameObject;
+        soilEffect = Resources.Load("SoilEffect") as GameObject;
         if (damagePrefab == null || defenseEffect == null || waterEffect == null || windEffect == null)
         {
             Debug.LogError("未找到特效！");
