@@ -119,6 +119,7 @@ public class EventManager : Singleton<EventManager> {
     /// <param name="battleSatge"></param>
 	public void GotoNewStageEvent(GameManager.BattleStage battleSatge)
 	{
+        if (GameManager.Instance.GameOver) { return; }
 		switch (battleSatge) {
 		case GameManager.BattleStage.PlayerGetCard://玩家抽卡阶段
                 UpdateBattleInfo("玩家抽卡");

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// 管理玩家状态
 /// Create:2018/12/7
-/// Last Edit Data:2019/1/4
+/// Last Edit Data:2019/3/11
 /// </summary>
 public class Player : MonoBehaviour {
 
@@ -15,7 +15,9 @@ public class Player : MonoBehaviour {
     public List<CardData> handCards = new List<CardData>();
     public Image image_HP;
     public Text hp_Text;
+    public Text word_Text;
     private float hp = MAX_HP;
+    private string[] words;
 
     public float HP
     {
@@ -24,6 +26,22 @@ public class Player : MonoBehaviour {
         {
             if (value > 0)
             {
+                if (value < 25)
+                {
+                    word_Text.text = words[3];
+                }
+                else if (value < 50)
+                {
+                    word_Text.text = words[2];
+                }
+                else if (value < 75)
+                {
+                    word_Text.text = words[1];
+                }
+                else
+                {
+                    word_Text.text = words[0];
+                }
                 hp = value;
                 image_HP.fillAmount = hp / MAX_HP;
             }
@@ -42,6 +60,8 @@ public class Player : MonoBehaviour {
         EventManager.Instance.PlayerGetCard += GetCard;
         EventManager.Instance.EnemyAttackEvent += BeAttack;
         hp_Text.text = string.Format("{0}/{1}",hp,MAX_HP);
+        TextAsset textAsset = Resources.Load("PlayerSpeak") as TextAsset;
+        words = textAsset.text.Split('\n');
     }
 
     private void OnDestroy()

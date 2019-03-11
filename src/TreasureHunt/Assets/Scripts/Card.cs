@@ -27,10 +27,12 @@ public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
                 if (GameManager.Instance.CurHandCardCount <= GameManager.Instance.maxHandCardCount)
                 { return; }
                 transform.localPosition += Vector3.up * 30;
+                GameManager.Instance.CurHandCardCount--;
             }
             else
             {
                 transform.localPosition -= Vector3.up * 30;
+                GameManager.Instance.CurHandCardCount++;
             }
             willDorp = value;
         }
@@ -216,15 +218,14 @@ public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
     {
         if (UIManager.Instance.playerHandCardUI.Count > GameManager.Instance.maxHandCardCount && GameManager.Instance.canDorp)
         {
+            //Debug.Log("Select");
             if (!willDorp)
             {
                 WillDorp = true;
-                GameManager.Instance.CurHandCardCount--;
             }
             else
             {
                 WillDorp = false;
-                GameManager.Instance.CurHandCardCount++;
             }
         }
     }

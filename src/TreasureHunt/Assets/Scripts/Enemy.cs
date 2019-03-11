@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour {
     public static List<CardData> handCards = new List<CardData>();
     public Image image_HP;
     public Text hp_Text;
+    public Text word_Text;
+
+    private string[] words;
 
     private float hp = MAX_HP;
     public float Hp
@@ -23,6 +26,22 @@ public class Enemy : MonoBehaviour {
         set {
             if (value > 0)
             {
+                if (value < 25)
+                {
+                    word_Text.text = words[3];
+                }
+                else if (value < 50)
+                {
+                    word_Text.text = words[2];
+                }
+                else if (value < 75)
+                {
+                    word_Text.text = words[1];
+                }
+                else
+                {
+                    word_Text.text = words[0];
+                }
                 hp = value;
                 image_HP.fillAmount = hp / MAX_HP;
             }
@@ -41,6 +60,9 @@ public class Enemy : MonoBehaviour {
         EventManager.Instance.EnemyGetCard += GetCard;
         EventManager.Instance.PlayerAttackEvent += BeAttack;
         hp_Text.text = string.Format("{0}/{1}",hp,MAX_HP);
+
+        TextAsset textAsset = Resources.Load("EnemySpeak") as TextAsset;
+        words = textAsset.text.Split('\n');
     }
 
     private void OnDestroy()

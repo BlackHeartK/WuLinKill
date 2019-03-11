@@ -4993,6 +4993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image_HP: {fileID: 256468878}
   hp_Text: {fileID: 875281781}
+  word_Text: {fileID: 1197577302}
 --- !u!114 &1624698898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5006,6 +5007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image_HP: {fileID: 726114874}
   hp_Text: {fileID: 1813381592}
+  word_Text: {fileID: 2069489441}
 --- !u!114 &1624698899
 MonoBehaviour:
   m_ObjectHideFlags: 0

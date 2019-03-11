@@ -24,6 +24,6 @@ xlua.hotfix(CS.AnimationManager,"PlayAttackAnime",function(self,etype,dam,pos,ef
     go.transform.position = pos
     go:GetComponentInChildren(typeof(CS.UnityEngine.UI.Text)).text = -dam
 	
-	print("New Attack")
+	--print("New Attack")
 end
 )

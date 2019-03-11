@@ -28,7 +28,7 @@ public class EnemyUseCardState : AIFSM
             yield return new WaitForSeconds(1.0f);
             if (GameManager.Instance.GameOver)
             {
-                break;
+                yield break;
             }
         }
         Enemy.UseCard();

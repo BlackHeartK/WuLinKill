@@ -2,7 +2,7 @@
 <Config>
   <Game>
     <PlayerHandCardCountLimit>6</PlayerHandCardCountLimit>
-    <AI_Difficulty>0</AI_Difficulty>
+    <AI_Difficulty>1</AI_Difficulty>
   </Game>
   <Sound>
     <BGM_Volume>0.3049169</BGM_Volume>
