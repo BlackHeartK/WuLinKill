@@ -10,10 +10,26 @@ xlua.hotfix("CardManager","GetNewCard",function()
 	
 	local newCard = {};
 	for i=0,cardCount,1 do
-		local ran = CS.UnityEngine.Random.Range(0, self.cardData.Count);
-		ran = CS.UnityEngine.Mathf.FloorToInt(ran);
+		--local ran = CS.UnityEngine.Random.Range(0, self.cardData.Count);
+		--ran = CS.UnityEngine.Mathf.FloorToInt(ran);
 		--print(ran);
-		newCard[i] = self.cardData[ran];
+		--newCard[i] = self.cardData[ran];
+		
+		local num = CS.UnityEngine.Random.Range(0, 100);
+		num = CS.UnityEngine.Mathf.FloorToInt(num);
+		if(num<20) then
+			local e = CS.UnityEngine.Random.Range(0, self.equipCards.Count);
+			e = CS.UnityEngine.Mathf.FloorToInt(e);
+			newCard[i] = self.equipCards[e];
+		elseif(num<50) then
+			local t = CS.UnityEngine.Random.Range(0, self.terrainCards.Count);
+			t = CS.UnityEngine.Mathf.FloorToInt(t);
+			newCard[i] = self.terrainCards[t];
+		else
+			local a = CS.UnityEngine.Random.Range(0, self.attackCards.Count);
+			a = CS.UnityEngine.Mathf.FloorToInt(a);
+			newCard[i] = self.attackCards[a];
+		end
 	end
     return newCard;
 end

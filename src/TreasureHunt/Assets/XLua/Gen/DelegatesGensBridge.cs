@@ -802,7 +802,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp34(object p0, int p1, int p2, float p3)
+		public void __Gen_Delegate_Imp34(object p0, int p1, int p2, float p3, ElementType p4)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -815,8 +815,9 @@ namespace XLua
                 LuaAPI.xlua_pushinteger(L, p1);
                 LuaAPI.xlua_pushinteger(L, p2);
                 LuaAPI.lua_pushnumber(L, p3);
+                translator.PushElementType(L, p4);
                 
-                PCall(L, 4, 0, errFunc);
+                PCall(L, 5, 0, errFunc);
                 
                 
                 

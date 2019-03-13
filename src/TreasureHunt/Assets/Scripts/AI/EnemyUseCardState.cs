@@ -22,16 +22,16 @@ public class EnemyUseCardState : AIFSM
 
     IEnumerator UseCard()
     {
-        while (Enemy.handCards.Count > 0)
+        while (m_AIManager.enemy.handCards.Count > 0)
         {
-            Enemy.UseCard();
+            m_AIManager.enemy.UseCard();
             yield return new WaitForSeconds(1.0f);
             if (GameManager.Instance.GameOver)
             {
                 yield break;
             }
         }
-        Enemy.UseCard();
+        m_AIManager.enemy.UseCard();
     }
 }
 

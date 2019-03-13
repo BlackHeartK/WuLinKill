@@ -19,7 +19,7 @@ public enum TerrainType
 /// <summary>
 /// 九宫格的格子
 /// Create:2018/9
-/// Last Edit Data:2018./10/10
+/// Last Edit Data:2019/3/11
 /// </summary>
 public class BattleBox : MonoBehaviour,IDropHandler {
     
@@ -191,12 +191,22 @@ public class BattleBox : MonoBehaviour,IDropHandler {
     /// <param name="eventData"></param>
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log(eventData.pointerDrag.gameObject.name + "Attack on " + GetIndex);
         var card = eventData.pointerDrag.gameObject.GetComponent<Card>();
+        if (card.cardType == CardType.ArmorCard || card.cardType == CardType.WeaponCard)
+        {
+            return;
+        }
+        
+        Debug.Log(eventData.pointerDrag.gameObject.name + "Attack on " + GetIndex);
+        
         CardData cd = new CardData();
         cd.cTpye = card.cardType;
         cd.eType = card.cardElement;
         cd.dam = card.Dam;
+        if (cd.eType == GameManager.Instance.player.weaponEle)
+        {
+            cd.dam += 1;
+        }
         GameManager.Instance.PlayerAttack(GetIndex, cd);
         GameManager.Instance.CurHandCardCount--;
         card.DestroySelf();

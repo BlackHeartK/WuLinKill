@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 /// <summary>
 /// 单张卡牌
 /// Craete:2018/9
-/// Last Edit:2019/1/7
+/// Last Edit:2019/3/12
 /// </summary>
 public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler,IPointerDownHandler {
 
@@ -16,6 +16,7 @@ public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
     public Image ui_Image;
     public RawImage ui_TypeImage;
     public Sprite[] eleSprites;
+    public Texture2D[] ui_MainType;
 
     private bool willDorp;
     public bool WillDorp
@@ -108,15 +109,24 @@ public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
 		}
 
 		switch (cType) {
-		case CardType.AttackCard:
-			ui_TypeImage.color = cols [i];
-			ui_Dam.color = cols [i];
-			break;
-		case CardType.TerrainCard:
-			break;
+		    case CardType.AttackCard:
+			    ui_TypeImage.color = cols [i];
+			    ui_Dam.color = cols [i];
+                ui_Image.sprite = eleSprites[i];
+                break;
+		    case CardType.TerrainCard:
+                ui_Image.sprite = eleSprites[i];
+                ui_TypeImage.texture = ui_MainType[i];
+                break;
+            case CardType.WeaponCard:
+                ui_Image.sprite = eleSprites[i];
+                ui_TypeImage.texture = ui_MainType[i];
+                break;
+            case CardType.ArmorCard:
+                ui_Image.sprite = eleSprites[i];
+                ui_TypeImage.texture = ui_MainType[i];
+                break;
 		}
-		ui_Image.sprite = eleSprites [i];
-
 	}
 
     /// <summary>
@@ -189,6 +199,12 @@ public class Card : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
                 CardManager.Instance.SetCurrentCard(card.cardType,card.cardElement,card.Dam);
                 break;
             case CardType.TerrainCard:
+                CardManager.Instance.SetCurrentCard(card.cardType, card.cardElement);
+                break;
+            case CardType.WeaponCard:
+                CardManager.Instance.SetCurrentCard(card.cardType, card.cardElement);
+                break;
+            case CardType.ArmorCard:
                 CardManager.Instance.SetCurrentCard(card.cardType, card.cardElement);
                 break;
         }

@@ -43,7 +43,7 @@ public class AIFSM_System {
     /// 添加一个新状态
     /// </summary>
     /// <param name="aiFSM"></param>
-    public void AddAIFSM(AIFSM aiFSM)
+    public void AddAIFSM(AIFSM aiFSM,AIManager manager)
     {
         if (aiFSM == null)
         {
@@ -59,7 +59,7 @@ public class AIFSM_System {
                 return;
             }
         }
-
+        aiFSM._AIManager = manager;
         aiFSMs.Add(aiFSM);
     }
 

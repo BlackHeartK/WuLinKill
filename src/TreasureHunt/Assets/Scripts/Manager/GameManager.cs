@@ -11,7 +11,7 @@ using XLua;
 /// <summary>
 /// 游戏主要流程逻辑管理
 /// Create:2018/9
-/// Last Edit Data:2018/1/7
+/// Last Edit Data:2018/3/12
 /// </summary>
 public class GameManager : Singleton<GameManager> {
 
@@ -28,12 +28,18 @@ public class GameManager : Singleton<GameManager> {
 	}
 
 	public BattleStage battleSatge = BattleStage.PlayerGetCard;
-	[Tooltip("顺序为：沙漠、森林、湖泊、山地")]
+	[Tooltip("顺序为：火、风、水、地")]
 	public Texture2D[] terrainImage;
+    [Tooltip("顺序为：火武、风武、水武、土武")]
+    public Texture2D[] WeaponImage;
+    [Tooltip("顺序为：火甲、风甲、水甲、土甲")]
+    public Texture2D[] ArmorImage;
     [Tooltip("顺序为：火、风、水、地、场地变动")]
     public AudioClip[] attackSoundEffect;
     public AudioClip terrainSoundEffect;
     public AudioClip defenseSoundEffect;
+
+    public Player player;
 
     public int startCardCount = 3;//初始抽卡数
     public int playerGetNewCardCount = 2;//玩家新回合抽卡数
@@ -81,21 +87,8 @@ public class GameManager : Singleton<GameManager> {
 	{
         ReadConfig();
 		battleSatge = BattleStage.None;
-		terrainImage = new Texture2D[4];
 		stageCount = System.Enum.GetNames (battleSatge.GetType ()).Length;
-		terrainImage[0] = Resources.Load ("TerrainImage/沙漠") as Texture2D;
-		terrainImage[1] = Resources.Load ("TerrainImage/森林") as Texture2D;
-		terrainImage[2] = Resources.Load ("TerrainImage/湖泊") as Texture2D;
-		terrainImage[3] = Resources.Load ("TerrainImage/山地") as Texture2D;
-
-        attackSoundEffect = new AudioClip[4];
-        attackSoundEffect[0] = Resources.Load("Sound/Effect/火") as AudioClip;
-        attackSoundEffect[1] = Resources.Load("Sound/Effect/风") as AudioClip;
-        attackSoundEffect[2] = Resources.Load("Sound/Effect/水") as AudioClip;
-        attackSoundEffect[3] = Resources.Load("Sound/Effect/地") as AudioClip;
-        terrainSoundEffect = Resources.Load("Sound/Effect/地形变动") as AudioClip;
-
-        defenseSoundEffect = Resources.Load("Sound/Effect/防御2") as AudioClip;
+        LoadAsset();
 
         luaEnv.DoString("require 'GameManager'");
 
@@ -106,6 +99,37 @@ public class GameManager : Singleton<GameManager> {
     private void OnApplicationQuit()
     {
         luaEnv.Dispose();
+    }
+
+    void LoadAsset()
+    {
+        terrainImage = new Texture2D[4];
+        terrainImage[0] = Resources.Load("TerrainImage/火") as Texture2D;
+        terrainImage[1] = Resources.Load("TerrainImage/风") as Texture2D;
+        terrainImage[2] = Resources.Load("TerrainImage/水") as Texture2D;
+        terrainImage[3] = Resources.Load("TerrainImage/地") as Texture2D;
+
+        WeaponImage = new Texture2D[4];
+        WeaponImage[0] = Resources.Load("Equipment/火武") as Texture2D;
+        WeaponImage[1] = Resources.Load("Equipment/风武") as Texture2D;
+        WeaponImage[2] = Resources.Load("Equipment/水武") as Texture2D;
+        WeaponImage[3] = Resources.Load("Equipment/土武") as Texture2D;
+
+        ArmorImage = new Texture2D[4];
+        ArmorImage[0] = Resources.Load("Equipment/火甲") as Texture2D;
+        ArmorImage[1] = Resources.Load("Equipment/风甲") as Texture2D;
+        ArmorImage[2] = Resources.Load("Equipment/水甲") as Texture2D;
+        ArmorImage[3] = Resources.Load("Equipment/土甲") as Texture2D;
+
+        attackSoundEffect = new AudioClip[4];
+        attackSoundEffect[0] = Resources.Load("Sound/Effect/火") as AudioClip;
+        attackSoundEffect[1] = Resources.Load("Sound/Effect/风") as AudioClip;
+        attackSoundEffect[2] = Resources.Load("Sound/Effect/水") as AudioClip;
+        attackSoundEffect[3] = Resources.Load("Sound/Effect/地") as AudioClip;
+        terrainSoundEffect = Resources.Load("Sound/Effect/地形变动") as AudioClip;
+
+        defenseSoundEffect = Resources.Load("Sound/Effect/防御2") as AudioClip;
+        
     }
 
     /// <summary>
@@ -225,14 +249,16 @@ public class GameManager : Singleton<GameManager> {
         string str;
         CardType type;
         CheckAttackType(cardData, row, col, out str, out type);
-        if (type == CardType.AttackCard)
+        switch (type)
         {
-            EventManager.Instance.UpdateBattleInfo("玩家使用了" + str + "攻击卡");
+            case CardType.AttackCard:
+                EventManager.Instance.UpdateBattleInfo("玩家使用了" + str + "攻击卡");
+                break;
+            case CardType.TerrainCard:
+                EventManager.Instance.UpdateBattleInfo("玩家使用了地形卡:" + str);
+                break;
         }
-        else if (type == CardType.TerrainCard)
-        {
-            EventManager.Instance.UpdateBattleInfo("玩家使用了地形卡:" + str);
-        }
+
     }
 
     /// <summary>
@@ -387,6 +413,7 @@ public class GameManager : Singleton<GameManager> {
                 CanvasUI.battleBoxes[row, col].SetTerrain(CardManager.Instance.elementToTerrainType[cardData.eType]);
                 AudioManager.Instance.PlayVoice(terrainSoundEffect);
                 break;
+            
         }
     }
 
@@ -410,14 +437,14 @@ public class GameManager : Singleton<GameManager> {
         {
 
             AnimationManager.Instance.PlayAttackAnime(elementType, dam, CanvasUI.battleBoxes[row, col].transform.position);
-            CheckBoxWithDamge(row,col,dam);
+            CheckBoxWithDamge(row,col,dam, elementType);
             //遍历行检测同属性
             for (int i = row-1; i >= 0; i--)
             {
                 if (terrainType == CanvasUI.battleBoxes[i, col].GetTerrainType)
                 {
                     AnimationManager.Instance.PlayAttackAnime(elementType, dam, CanvasUI.battleBoxes[i, col].transform.position);
-                    CheckBoxWithDamge(i, col, dam);
+                    CheckBoxWithDamge(i, col, dam, elementType);
                 }
                 else
                 { break; }
@@ -427,7 +454,7 @@ public class GameManager : Singleton<GameManager> {
                 if (terrainType == CanvasUI.battleBoxes[i, col].GetTerrainType)
                 {
                     AnimationManager.Instance.PlayAttackAnime(elementType, dam, CanvasUI.battleBoxes[i, col].transform.position);
-                    CheckBoxWithDamge(i, col, dam);
+                    CheckBoxWithDamge(i, col, dam, elementType);
                 }
                 else
                 { break; }
@@ -438,7 +465,7 @@ public class GameManager : Singleton<GameManager> {
                 if (terrainType == CanvasUI.battleBoxes[row, j].GetTerrainType)
                 {
                     AnimationManager.Instance.PlayAttackAnime(elementType, dam, CanvasUI.battleBoxes[row, j].transform.position);
-                    CheckBoxWithDamge(row, j, dam);
+                    CheckBoxWithDamge(row, j, dam, elementType);
                 }
                 else
                 { break; }
@@ -448,7 +475,7 @@ public class GameManager : Singleton<GameManager> {
                 if (terrainType == CanvasUI.battleBoxes[row, j].GetTerrainType)
                 {
                     AnimationManager.Instance.PlayAttackAnime(elementType, dam, CanvasUI.battleBoxes[row, j].transform.position);
-                    CheckBoxWithDamge(row, j, dam);
+                    CheckBoxWithDamge(row, j, dam, elementType);
                 }
                 else
                 { break; }
@@ -458,19 +485,19 @@ public class GameManager : Singleton<GameManager> {
         else//非克制属性伤害减半
         {
             AnimationManager.Instance.PlayAttackAnime(elementType, dam * 0.5f, CanvasUI.battleBoxes[row, col].transform.position);
-            CheckBoxWithDamge(row, col, dam * 0.5f);
+            CheckBoxWithDamge(row, col, dam * 0.5f, elementType);
         }
     }
 
-    void CheckBoxWithDamge(int row,int col,float dam)
+    void CheckBoxWithDamge(int row,int col,float dam,ElementType elementType)
     {
         if (battleSatge == BattleStage.PlayerUseCard)
         {
-            EventManager.Instance.PlayerAttack(row, col, dam);
+            EventManager.Instance.PlayerAttack(row, col, dam, elementType);
         }
         if (battleSatge == BattleStage.EnemyUseCard)
         {
-            EventManager.Instance.EnemyAttack(row,col,dam);
+            EventManager.Instance.EnemyAttack(row, col, dam, elementType);
         }
     }
 

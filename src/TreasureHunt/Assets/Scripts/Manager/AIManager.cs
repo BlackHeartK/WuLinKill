@@ -7,17 +7,21 @@ using UnityEngine;
 /// Create:2018/12
 /// Last Edit:2019/1/2
 /// </summary>
+[RequireComponent(typeof(Enemy))]
 public class AIManager : MonoBehaviour {
 
     public static AIFSM_System aiFSM_System;
+    [HideInInspector]
+    public Enemy enemy;
 
     public void Start()
     {
+        enemy = GetComponent<Enemy>();
         aiFSM_System = new AIFSM_System();
         AIFSM[] aiFSMs = GetComponentsInChildren<AIFSM>();
         for (int i = 0; i < aiFSMs.Length; i++)
         {
-            aiFSM_System.AddAIFSM(aiFSMs[i]);
+            aiFSM_System.AddAIFSM(aiFSMs[i],this);
         }
 
         EnemyWaitState waitState = GetComponentInChildren<EnemyWaitState>();

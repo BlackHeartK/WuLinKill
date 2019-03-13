@@ -15,7 +15,9 @@ public enum CardType
 {
     none,
     AttackCard,
-    TerrainCard
+    TerrainCard,
+    WeaponCard,
+    ArmorCard
 }
 
 /// <summary>
@@ -32,9 +34,10 @@ public enum ElementType
 }
 
 /// <summary>
+/// 
 /// 卡片数据管理
 /// Create:2018/9
-/// Last Edit Data:2019/1/4
+/// Last Edit Data:2019/3/12
 /// </summary>
 public class CardManager : Singleton<CardManager> {
     
@@ -45,6 +48,10 @@ public class CardManager : Singleton<CardManager> {
 	public List<CardData> cardData = new List<CardData>();
     public Dictionary<ElementType, TerrainType> elementToTerrainType = new Dictionary<ElementType, TerrainType>();
     public Dictionary<ElementType, TerrainType> restraintTable = new Dictionary<ElementType, TerrainType>();
+
+    private List<CardData> attackCards = new List<CardData>();
+    private List<CardData> terrainCards = new List<CardData>();
+    private List<CardData> equipCards = new List<CardData>();
 
     private LuaEnv luaEnv = new LuaEnv();
 
@@ -142,30 +149,42 @@ public class CardManager : Singleton<CardManager> {
             string element = jsonData["Cards"][i]["Element"].ToString().Split('"')[1];
 
             CardData cd = new CardData();
-            switch (type)
-            {
-                case "Attack":
-                    cd.cTpye = CardType.AttackCard;break;
-                case "Terrain":
-                    cd.cTpye = CardType.TerrainCard;break;
-                default:continue;
-            }
             switch (element)
             {
                 case "Fire":
-                    cd.eType = ElementType.Fire; break;
+                    cd.eType = ElementType.Fire;
+                    break;
                 case "Soil":
-                    cd.eType = ElementType.Soil; break;
+                    cd.eType = ElementType.Soil;
+                    break;
                 case "Water":
-                    cd.eType = ElementType.Water; break;
+                    cd.eType = ElementType.Water;
+                    break;
                 case "Wind":
-                    cd.eType = ElementType.Wind; break;
-                default:continue;
+                    cd.eType = ElementType.Wind;
+                    break;
+                default: continue;
             }
-            if (cd.cTpye == CardType.AttackCard)
+            switch (type)
             {
-                //cd.dam = int.Parse(jsonData["Cards"][i]["Damage"].ToString());
-                cd.dam = int.Parse(jsonData["Cards"][i]["Damage"].ToString().Split('"')[1]);
+                case "Attack":
+                    cd.cTpye = CardType.AttackCard;
+                    cd.dam = int.Parse(jsonData["Cards"][i]["Damage"].ToString().Split('"')[1]);
+                    attackCards.Add(cd);
+                    break;
+                case "Terrain":
+                    cd.cTpye = CardType.TerrainCard;
+                    terrainCards.Add(cd);
+                    break;
+                case "Weapon":
+                    cd.cTpye = CardType.WeaponCard;
+                    equipCards.Add(cd);
+                    break;
+                case "Armor":
+                    cd.cTpye = CardType.ArmorCard;
+                    equipCards.Add(cd);
+                    break;
+                default:continue;
             }
             cardData.Add(cd);
         }

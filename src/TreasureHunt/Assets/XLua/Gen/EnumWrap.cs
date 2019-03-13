@@ -24,13 +24,17 @@ namespace XLua.CSObjectWrap
 		    Utils.BeginObjectRegister(typeof(CardType), L, translator, 0, 0, 0, 0);
 			Utils.EndObjectRegister(typeof(CardType), L, translator, null, null, null, null, null);
 			
-			Utils.BeginClassRegister(typeof(CardType), L, null, 4, 0, 0);
+			Utils.BeginClassRegister(typeof(CardType), L, null, 6, 0, 0);
             
             Utils.RegisterObject(L, translator, Utils.CLS_IDX, "none", CardType.none);
             
             Utils.RegisterObject(L, translator, Utils.CLS_IDX, "AttackCard", CardType.AttackCard);
             
             Utils.RegisterObject(L, translator, Utils.CLS_IDX, "TerrainCard", CardType.TerrainCard);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WeaponCard", CardType.WeaponCard);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "ArmorCard", CardType.ArmorCard);
             
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
             
@@ -60,6 +64,14 @@ namespace XLua.CSObjectWrap
 				else if (LuaAPI.xlua_is_eq_str(L, 1, "TerrainCard"))
                 {
                     translator.PushCardType(L, CardType.TerrainCard);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "WeaponCard"))
+                {
+                    translator.PushCardType(L, CardType.WeaponCard);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "ArmorCard"))
+                {
+                    translator.PushCardType(L, CardType.ArmorCard);
                 }
 				else
                 {

@@ -36,6 +36,38 @@
         {
             "Type": "Terrain",
             "Element": "Wind"
+        },
+		{
+            "Type": "Weapon",
+            "Element": "Fire"
+        },
+		{
+            "Type": "Weapon",
+            "Element": "Soil"
+        },
+		{
+            "Type": "Weapon",
+            "Element": "Water"
+        },
+		{
+            "Type": "Weapon",
+            "Element": "Wind"
+        },
+		{
+            "Type": "Armor",
+            "Element": "Fire"
+        },
+		{
+            "Type": "Armor",
+            "Element": "Soil"
+        },
+		{
+            "Type": "Armor",
+            "Element": "Water"
+        },
+		{
+            "Type": "Armor",
+            "Element": "Wind"
         }
     ]
 }

@@ -6,62 +6,20 @@ using UnityEngine.UI;
 /// <summary>
 /// 管理玩家状态
 /// Create:2018/12/7
-/// Last Edit Data:2019/3/11
+/// Last Edit:2019/3/12
 /// </summary>
-public class Player : MonoBehaviour {
-
-    const int MAX_HP = 100;
-
-    public List<CardData> handCards = new List<CardData>();
-    public Image image_HP;
-    public Text hp_Text;
-    public Text word_Text;
-    private float hp = MAX_HP;
-    private string[] words;
-
-    public float HP
-    {
-        get { return hp; }
-        set
-        {
-            if (value > 0)
-            {
-                if (value < 25)
-                {
-                    word_Text.text = words[3];
-                }
-                else if (value < 50)
-                {
-                    word_Text.text = words[2];
-                }
-                else if (value < 75)
-                {
-                    word_Text.text = words[1];
-                }
-                else
-                {
-                    word_Text.text = words[0];
-                }
-                hp = value;
-                image_HP.fillAmount = hp / MAX_HP;
-            }
-            else
-            {
-                hp = 0;
-                image_HP.fillAmount = 0;
-                GameManager.Instance.GameOver = true;
-            }
-            hp_Text.text = string.Format("{0}/{1}", hp, MAX_HP);
-        }
-    }
+public class Player : Person {
+    
 
     #region Unity
     void Start () {
+        hp = MAX_HP;
         EventManager.Instance.PlayerGetCard += GetCard;
         EventManager.Instance.EnemyAttackEvent += BeAttack;
         hp_Text.text = string.Format("{0}/{1}",hp,MAX_HP);
         TextAsset textAsset = Resources.Load("PlayerSpeak") as TextAsset;
         words = textAsset.text.Split('\n');
+        GameManager.Instance.player = this;
     }
 
     private void OnDestroy()
@@ -72,21 +30,42 @@ public class Player : MonoBehaviour {
     #endregion
 
     /// <summary>
-    /// 被攻击
+    /// 被攻击时调用
     /// </summary>
     /// <param name="i"></param>
     /// <param name="j"></param>
     /// <param name="damage"></param>
-    void BeAttack(int i,int j,float damage)
+    /// <param name="elementType"></param>
+    public override void BeAttack(int i,int j,float damage,ElementType elementType)
     {
-        HP -= damage;
+        base.BeAttack(i,j, damage, elementType);
+    }
+
+    /// <summary>
+    /// 设置装备
+    /// </summary>
+    /// <param name="cardType"></param>
+    /// <param name="elementType"></param>
+    void SetEquip(EquipType equipType, ElementType elementType)
+    {
+        switch (equipType)
+        {
+            case EquipType.Armor:
+                isHasArmor = true;
+                armorEle = elementType;
+                break;
+            case EquipType.Weapon:
+                isHasWeapon = true;
+                weaponEle = elementType;
+                break;
+        }
     }
 
     /// <summary>
     /// 获得新卡片数据
     /// </summary>
     /// <param name="cardDatas"></param>
-    void GetCard(CardData[] cardDatas)
+    public override void GetCard(CardData[] cardDatas)
     {
         for (int i = 0; i < cardDatas.Length; i++)
         {

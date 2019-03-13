@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 事件管理
 /// Create:2018/9
-/// Last Edit Data:2019/1/7
+/// Last Edit Data:2019/3/12
 /// </summary>
 public class EventManager : Singleton<EventManager> {
 
@@ -31,9 +31,13 @@ public class EventManager : Singleton<EventManager> {
     public event DorpCardEventHandler DorpCardEvent;
 
     //攻击事件
-    public delegate void AttackEventHandler(int boxRow,int boxCol,float damage);
+    public delegate void AttackEventHandler(int boxRow,int boxCol,float damage,ElementType type);
     public event AttackEventHandler PlayerAttackEvent;
     public event AttackEventHandler EnemyAttackEvent;
+
+    //装备事件
+    public delegate void EquipEventHandler(EquipType equipType, ElementType elementType);
+    public event EquipEventHandler PlayerEquipEvent;
 
     public delegate void UpdateBattleInfoEventHandler(string info);
     public UpdateBattleInfoEventHandler UpdateBattleInfo;
@@ -80,11 +84,11 @@ public class EventManager : Singleton<EventManager> {
     /// <param name="boxRow"></param>
     /// <param name="boxCol"></param>
     /// <param name="dam"></param>
-    public void PlayerAttack(int boxRow,int boxCol,float dam)
+    public void PlayerAttack(int boxRow,int boxCol,float dam,ElementType elementType)
     {
         if (PlayerAttackEvent != null)
         {
-            PlayerAttackEvent(boxRow, boxCol, dam);
+            PlayerAttackEvent(boxRow, boxCol, dam,elementType);
         }
     }
 
@@ -94,11 +98,11 @@ public class EventManager : Singleton<EventManager> {
     /// <param name="boxRow"></param>
     /// <param name="boxCol"></param>
     /// <param name="dam"></param>
-    public void EnemyAttack(int boxRow, int boxCol,float dam)
+    public void EnemyAttack(int boxRow, int boxCol,float dam,ElementType elementType)
     {
         if (EnemyAttackEvent != null)
         {
-            EnemyAttackEvent(boxRow, boxCol, dam);
+            EnemyAttackEvent(boxRow, boxCol, dam, elementType);
         }
     }
 
@@ -160,6 +164,17 @@ public class EventManager : Singleton<EventManager> {
         if (SceneChangeEvent != null)
         {
             SceneChangeEvent();
+        }
+    }
+
+    /// <summary>
+    /// 触发使用装备牌
+    /// </summary>
+    public void PlayerEquip(EquipType equipType, ElementType elementType)
+    {
+        if (PlayerEquipEvent != null)
+        {
+            PlayerEquipEvent(equipType, elementType);
         }
     }
 }

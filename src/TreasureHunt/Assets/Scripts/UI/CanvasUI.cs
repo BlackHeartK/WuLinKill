@@ -73,7 +73,7 @@ public class CanvasUI : MonoBehaviour {
     /// <param name="row"></param>
     /// <param name="col"></param>
     /// <param name="dam"></param>
-    void AttackTrigger(int row,int col,float dam)
+    void AttackTrigger(int row,int col,float dam,ElementType elementType)
     {
         battleBoxes[row, col].HP -= dam;
     }
@@ -145,13 +145,20 @@ public class CanvasUI : MonoBehaviour {
             cardClone.transform.localPosition = cardBornPos.localPosition;
             //cardClone.transform.localPosition = cardBornPos.localPosition;//暂时注释 后面要做触发动画
             AudioManager.Instance.PlayVoice(getCardAudio);
-            if (cardDatas[i].cTpye == CardType.AttackCard)
+            switch (cardDatas[i].cTpye)
             {
-                cardClone.GetComponent<Card>().SetCardProperty(cardDatas[i].cTpye, cardDatas[i].eType, cardDatas[i].dam + GameManager.Instance.playerExtraDamage);
-            }
-            else if (cardDatas[i].cTpye == CardType.TerrainCard)
-            {
-                cardClone.GetComponent<Card>().SetCardProperty(cardDatas[i].cTpye, cardDatas[i].eType);
+                case CardType.AttackCard:
+                    cardClone.GetComponent<Card>().SetCardProperty(cardDatas[i].cTpye, cardDatas[i].eType, cardDatas[i].dam + GameManager.Instance.playerExtraDamage);
+                    break;
+                case CardType.TerrainCard:
+                    cardClone.GetComponent<Card>().SetCardProperty(cardDatas[i].cTpye, cardDatas[i].eType);
+                    break;
+                case CardType.WeaponCard:
+                    cardClone.GetComponent<Card>().SetCardProperty(cardDatas[i].cTpye, cardDatas[i].eType);
+                    break;
+                case CardType.ArmorCard:
+                    cardClone.GetComponent<Card>().SetCardProperty(cardDatas[i].cTpye, cardDatas[i].eType);
+                    break;
             }
             UIManager.Instance.playerHandCardUI.Add(cardClone);
         }

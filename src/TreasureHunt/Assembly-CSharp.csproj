@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\Manager\ManagerOfManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SceneManager.cs" />
     <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Person.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\RotSelf.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Assets\Scripts\UI\BattleInfoUIController.cs" />
     <Compile Include="Assets\Scripts\UI\CanvasUI.cs" />
     <Compile Include="Assets\Scripts\UI\DiffcutySettingUI.cs" />
+    <Compile Include="Assets\Scripts\UI\EquipArea.cs" />
     <Compile Include="Assets\XLua\Examples\01_Helloworld\Helloworld.cs" />
     <Compile Include="Assets\XLua\Examples\02_U3DScripting\LuaBehaviour.cs" />
     <Compile Include="Assets\XLua\Examples\04_LuaObjectOrented\InvokeLua.cs" />
