@@ -131,7 +131,7 @@ public class CanvasUI : MonoBehaviour {
         
         for (int i = 0; i < cardDatas.Length; i++)
         {
-#if UNITY_EDITOR
+#if UNITY_STANDALONE_WIN
             string path = string.Format("Card/{0}", cardDatas[i].cTpye.ToString());
             Object card = Resources.Load(path);
 

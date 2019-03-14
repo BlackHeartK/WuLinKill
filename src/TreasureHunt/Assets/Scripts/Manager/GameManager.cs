@@ -138,7 +138,7 @@ public class GameManager : Singleton<GameManager> {
     /// <returns></returns>
     XElement LoadConfigFile()
     {
-#if UNITY_EDITOR
+#if UNITY_STANDALONE_WIN
         xmlFilePath = string.Format("{0}/{1}", Application.streamingAssetsPath, fileName);
         XElement root = XElement.Load(xmlFilePath);
         return root;

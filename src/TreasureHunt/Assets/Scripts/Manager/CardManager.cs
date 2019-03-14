@@ -116,7 +116,7 @@ public class CardManager : Singleton<CardManager> {
 	void ReadJson(string url)
 	{
         
-#if UNITY_EDITOR
+#if UNITY_STANDALONE_WIN
         string jsonText = null;
         try
         {

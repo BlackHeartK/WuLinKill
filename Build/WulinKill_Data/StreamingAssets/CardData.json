@@ -1,0 +1,73 @@
+﻿{
+    "name": "CardData",
+    "Cards": [
+        {
+            "Type": "Attack",
+            "Element": "Fire",
+            "Damage": "2"
+        },
+        {
+            "Type": "Attack",
+            "Element": "Soil",
+            "Damage": "2"
+        },
+        {
+            "Type": "Attack",
+            "Element": "Water",
+            "Damage": "2"
+        },
+        {
+            "Type": "Attack",
+            "Element": "Wind",
+            "Damage": "2"
+        },
+        {
+            "Type": "Terrain",
+            "Element": "Fire"
+        },
+        {
+            "Type": "Terrain",
+            "Element": "Soil"
+        },        
+        {
+            "Type": "Terrain",
+            "Element": "Water"
+        },
+        {
+            "Type": "Terrain",
+            "Element": "Wind"
+        },
+		{
+            "Type": "Weapon",
+            "Element": "Fire"
+        },
+		{
+            "Type": "Weapon",
+            "Element": "Soil"
+        },
+		{
+            "Type": "Weapon",
+            "Element": "Water"
+        },
+		{
+            "Type": "Weapon",
+            "Element": "Wind"
+        },
+		{
+            "Type": "Armor",
+            "Element": "Fire"
+        },
+		{
+            "Type": "Armor",
+            "Element": "Soil"
+        },
+		{
+            "Type": "Armor",
+            "Element": "Water"
+        },
+		{
+            "Type": "Armor",
+            "Element": "Wind"
+        }
+    ]
+}

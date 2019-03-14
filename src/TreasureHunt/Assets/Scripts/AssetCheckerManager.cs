@@ -22,7 +22,7 @@ public class AssetCheckerManager : Singleton<AssetCheckerManager> {
         { }
         verTex = local.text;
 
-#if UNITY_EDITOR
+#if UNITY_STANDALONE_WIN
         string url = @"F:\WorkSpace\WulinKill\Version.txt";
 #elif UNITY_ANDROID
         string url = "jar:file:///storage/emulated/0/Download/Version.txt";
@@ -61,7 +61,7 @@ public class AssetCheckerManager : Singleton<AssetCheckerManager> {
         };
         for (int index = 0; index < abName.Length; index++)
         {
-#if UNITY_EDITOR
+#if UNITY_STANDALONE_WIN
             string url = Application.streamingAssetsPath + abName[index];
 #elif UNITY_ANDROID
         string url = "jar:file:///storage/emulated/0/Download/version.assetbundle";
@@ -91,7 +91,7 @@ public class AssetCheckerManager : Singleton<AssetCheckerManager> {
     {
         string part;
         name = GetLastPartFileName(fileName,out part);
-#if UNITY_EDITOR
+#if UNITY_STANDALONE_WIN
         string fullPath = Application.dataPath + part + '/' + name;
 #elif UNITY_ANDROID
         string fullPath = Application.persistentDataPath + part + '/' + name;
