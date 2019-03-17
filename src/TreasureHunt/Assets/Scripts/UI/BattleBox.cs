@@ -10,6 +10,7 @@ using DG.Tweening;
 /// </summary>
 public enum TerrainType
 {
+    none,
     mountain,
     lake,
     forest,
@@ -19,7 +20,7 @@ public enum TerrainType
 /// <summary>
 /// 九宫格的格子
 /// Create:2018/9
-/// Last Edit Data:2019/3/11
+/// Last Edit Data:2019/3/16 地形类别加入none
 /// </summary>
 public class BattleBox : MonoBehaviour,IDropHandler {
     
@@ -103,7 +104,7 @@ public class BattleBox : MonoBehaviour,IDropHandler {
         }
     }
 
-	private TerrainType myTerrainType;
+	private TerrainType myTerrainType = TerrainType.none;
 	private RawImage mRawImage;
 
     /// <summary>
@@ -112,7 +113,8 @@ public class BattleBox : MonoBehaviour,IDropHandler {
     public void WakeUp()
     {
         mRawImage = GetComponent<RawImage>();
-        SetTerrain((TerrainType)Random.Range(0, 3));
+        if (Helper.isInstructionMode) { return; }
+        SetTerrain((TerrainType)Random.Range(1, 4));
         //		Debug.Log (string.Format("{0}:{1}",GetIndex,myTerrainType));
     }
 
@@ -191,13 +193,14 @@ public class BattleBox : MonoBehaviour,IDropHandler {
     /// <param name="eventData"></param>
     public void OnDrop(PointerEventData eventData)
     {
+        if (myTerrainType == TerrainType.none) { return; }
         var card = eventData.pointerDrag.gameObject.GetComponent<Card>();
         if (card.cardType == CardType.ArmorCard || card.cardType == CardType.WeaponCard)
         {
             return;
         }
         
-        Debug.Log(eventData.pointerDrag.gameObject.name + "Attack on " + GetIndex);
+        //Debug.Log(eventData.pointerDrag.gameObject.name + "Attack on " + GetIndex);
         
         CardData cd = new CardData();
         cd.cTpye = card.cardType;

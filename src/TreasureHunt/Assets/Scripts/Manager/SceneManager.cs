@@ -23,15 +23,26 @@ public class SceneManager : Singleton<SceneManager> {
     /// <summary>
     /// 跳转到下一场景
     /// </summary>
-	public void NextScene()
+	public void BackMenu()
 	{
-		sceneNum++;
-//		Debug.Log (UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings);
-		if (sceneNum >= UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings) {
-			sceneNum = 0;
-		}
-		UnityEngine.SceneManagement.SceneManager.LoadScene (sceneNum,UnityEngine.SceneManagement.LoadSceneMode.Single);
+		UnityEngine.SceneManagement.SceneManager.LoadScene (0,UnityEngine.SceneManagement.LoadSceneMode.Single);
 	}
+
+    /// <summary>
+    /// 跳转到主场景
+    /// </summary>
+    public void OpenMainScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1, UnityEngine.SceneManagement.LoadSceneMode.Single);
+    }
+
+    /// <summary>
+    /// 跳转到教学场景
+    /// </summary>
+    public void OpenInstructionScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2, UnityEngine.SceneManagement.LoadSceneMode.Single);
+    }
 
     private void Update()
     {

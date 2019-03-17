@@ -32,6 +32,7 @@ public class UIManager : Singleton<UIManager> {
 	public void Init()
 	{
         EventManager.Instance.SceneChangeEvent += ToReset;
+        //EventManager.Instance.PlayerUseCard += OnBeginPlayerUseCardTurn;
         Debug.Log ("UiM Init Finished!");
 	}
 
@@ -91,6 +92,15 @@ public class UIManager : Singleton<UIManager> {
             }
         }
     }
+
+    //void OnBeginPlayerUseCardTurn()
+    //{
+    //    FrezzePlayerHandCard(false);
+    //    if (!Helper.isInstructionMode)
+    //    {
+    //        EnableOrDisableUI(UiArea.OverPlayerTurnButton, true);
+    //    }
+    //}
 
     /// <summary>
     /// 重置

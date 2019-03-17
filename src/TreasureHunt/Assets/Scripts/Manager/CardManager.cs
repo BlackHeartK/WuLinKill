@@ -213,4 +213,50 @@ public class CardManager : Singleton<CardManager> {
         }
         return newCard;
     }
+
+    /// <summary>
+    /// 教学模式下从卡组中获取新卡
+    /// </summary>
+    /// <returns></returns>
+    public CardData[] GetCardInInstructionMode()
+    {
+        CardData[] newCard = null;
+        if (Helper.Index == 6)
+        {
+            newCard = new CardData[4];
+            for (int i = 0; i < newCard.Length; i++)
+            {
+                newCard[i] = terrainCards[i];
+            }
+        }
+        else if (Helper.Index < 10)
+        {
+            newCard = new CardData[4];
+            for (int i = 0; i < newCard.Length; i++)
+            {
+                newCard[i] = attackCards[i];
+            }
+        }
+        else if (Helper.Index == 10)
+        {
+            newCard = new CardData[4];
+            for (int i = 0; i < 2; i++)
+            {
+                newCard[i] = equipCards[i];
+            }
+            for (int i = 5; i < 7; i++)
+            {
+                newCard[i - 3] = equipCards[i];
+            }
+        }
+        else
+        {
+            newCard = new CardData[5];
+            for (int i = 0; i < newCard.Length; i++)
+            {
+                newCard[i] = cardData[UnityEngine.Random.Range(0, cardData.Count - 1)];
+            }
+        }
+        return newCard;
+    }
 }

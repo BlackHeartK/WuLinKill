@@ -85,4 +85,5 @@ public abstract class Person : MonoBehaviour {
     /// <param name="cardDatas"></param>
     public virtual void GetCard(CardData[] cardDatas)
     { }
+
 }

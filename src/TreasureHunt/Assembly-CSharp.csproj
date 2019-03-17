@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Demo\DemoMenu.cs" />
     <Compile Include="Assets\Scripts\DestroySelf.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Helper.cs" />
     <Compile Include="Assets\Scripts\Manager\AIManager.cs" />
     <Compile Include="Assets\Scripts\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Scripts\Manager\AudioManager.cs" />

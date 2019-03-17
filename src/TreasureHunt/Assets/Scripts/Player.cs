@@ -73,6 +73,4 @@ public class Player : Person {
             GameManager.Instance.CurHandCardCount++;
         }
     }
-
-    
 }

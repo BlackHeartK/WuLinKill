@@ -546,5 +546,7 @@ public class GameManager : Singleton<GameManager> {
         enemyExtraDamage = 0;
         GameOver = false;
         battleSatge = BattleStage.None;
+        CurHandCardCount = 0;
+        canDorp = false;
     }
 }

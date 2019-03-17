@@ -13,6 +13,7 @@ public class Demo : MonoBehaviour {
 
     #region Unity
     void Start () {
+        if (Helper.isInstructionMode) { return; }
 		StartCoroutine (GameManager.Instance.ReadyStartBattle (playableDirector));
 	}
 	
@@ -30,7 +31,7 @@ public class Demo : MonoBehaviour {
     {
         UIManager.Instance.uiDictionary.Clear();
         GameManager.Instance.battleSatge = GameManager.BattleStage.None;
-        SceneManager.Instance.NextScene();
+        SceneManager.Instance.BackMenu();
     }
 
     /// <summary>

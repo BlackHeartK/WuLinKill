@@ -7,7 +7,7 @@ using DG.Tweening;
 /// <summary>
 /// 用于对主面板UI进行操作
 /// Create:2018/10
-/// Last Edit:2019/1/7
+/// Last Edit:2019/3/16
 /// </summary>
 public class CanvasUI : MonoBehaviour {
 
@@ -97,30 +97,30 @@ public class CanvasUI : MonoBehaviour {
     }
 
     /// <summary>
-    /// 设置九宫格
+    /// 随机设置九宫格
     /// </summary>
     /// <param name="elementType"></param>
-    public void SetBoxTerrain(ElementType elementType)
-    {
-        int row = Random.Range(0, 2);
-        int col = Random.Range(0, 2);
-        switch (elementType)
-        {
-            case ElementType.Fire:
-                battleBoxes[row, col].SetTerrain(TerrainType.desert);
-                break;
-            case ElementType.Soil:
-                battleBoxes[row, col].SetTerrain(TerrainType.mountain);
-                break;
-            case ElementType.Water:
-                battleBoxes[row, col].SetTerrain(TerrainType.lake);
-                break;
-            case ElementType.Wind:
-                battleBoxes[row, col].SetTerrain(TerrainType.forest);
-                break;
-        }
+    //public void SetBoxTerrain(ElementType elementType)
+    //{
+    //    int row = Random.Range(0, 2);
+    //    int col = Random.Range(0, 2);
+    //    switch (elementType)
+    //    {
+    //        case ElementType.Fire:
+    //            battleBoxes[row, col].SetTerrain(TerrainType.desert);
+    //            break;
+    //        case ElementType.Soil:
+    //            battleBoxes[row, col].SetTerrain(TerrainType.mountain);
+    //            break;
+    //        case ElementType.Water:
+    //            battleBoxes[row, col].SetTerrain(TerrainType.lake);
+    //            break;
+    //        case ElementType.Wind:
+    //            battleBoxes[row, col].SetTerrain(TerrainType.forest);
+    //            break;
+    //    }
         
-    }
+    //}
     
     /// <summary>
     /// 玩家获取卡牌UI
@@ -140,10 +140,9 @@ public class CanvasUI : MonoBehaviour {
             Object card = Resources.Load(path);
 #endif
 
-            GameObject cardClone = Instantiate(card) as GameObject;
-            cardClone.transform.SetParent(trans);
+            GameObject cardClone = Instantiate(card, trans) as GameObject;
+            cardClone.transform.localScale = (Screen.height/1080) * Vector3.one;
             cardClone.transform.localPosition = cardBornPos.localPosition;
-            //cardClone.transform.localPosition = cardBornPos.localPosition;//暂时注释 后面要做触发动画
             AudioManager.Instance.PlayVoice(getCardAudio);
             switch (cardDatas[i].cTpye)
             {
@@ -233,4 +232,26 @@ public class CanvasUI : MonoBehaviour {
         failUI.SetActive(true);
     }
 
+    /// <summary>
+    /// 显示教学用地形
+    /// </summary>
+    /// <param name="fullFill"></param>
+    public static void ShowInstructionTerrain(bool fullFill)
+    {
+        if (!fullFill)
+        {
+            battleBoxes[0, 0].SetTerrain(TerrainType.desert);
+            battleBoxes[0, 1].SetTerrain(TerrainType.forest);
+            battleBoxes[1, 0].SetTerrain(TerrainType.lake);
+            battleBoxes[1, 1].SetTerrain(TerrainType.mountain);
+        }
+        else
+        {
+            battleBoxes[0, 2].SetTerrain(TerrainType.desert);
+            battleBoxes[1, 2].SetTerrain(TerrainType.desert);
+            battleBoxes[2, 0].SetTerrain(TerrainType.desert);
+            battleBoxes[2, 1].SetTerrain(TerrainType.desert);
+            battleBoxes[2, 2].SetTerrain(TerrainType.desert);
+        }
+    }
 }

@@ -59,8 +59,16 @@ public class DemoMenu : MonoBehaviour {
     /// </summary>
 	public void StartGame()
 	{
-		SceneManager.Instance.NextScene ();
+		SceneManager.Instance.OpenMainScene ();
 	}
+
+    /// <summary>
+    /// 开始教学模式
+    /// </summary>
+    public void StartInstruction()
+    {
+        SceneManager.Instance.OpenInstructionScene();
+    }
 
     /// <summary>
     /// 退出游戏

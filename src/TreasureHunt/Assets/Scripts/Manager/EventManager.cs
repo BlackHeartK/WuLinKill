@@ -128,7 +128,14 @@ public class EventManager : Singleton<EventManager> {
 		case GameManager.BattleStage.PlayerGetCard://玩家抽卡阶段
                 UpdateBattleInfo("玩家抽卡");
                 if (PlayerGetCard != null)
-                    PlayerGetCard(CardManager.Instance.GetNewCard());
+                    if (Helper.isInstructionMode)
+                    {
+                        PlayerGetCard(CardManager.Instance.GetCardInInstructionMode());
+                    }
+                    else
+                    {
+                        PlayerGetCard(CardManager.Instance.GetNewCard());
+                    }
                 break;
 		case GameManager.BattleStage.PlayerUseCard://玩家用卡阶段
                 UpdateBattleInfo("玩家回合开始");
@@ -137,7 +144,10 @@ public class EventManager : Singleton<EventManager> {
                     PlayerUseCard();
                 }
                 UIManager.Instance.FrezzePlayerHandCard(false);
-                UIManager.Instance.EnableOrDisableUI (UIManager.UiArea.OverPlayerTurnButton, true);
+                if (!Helper.isInstructionMode)
+                {
+                    UIManager.Instance.EnableOrDisableUI(UIManager.UiArea.OverPlayerTurnButton, true);
+                }
 			break;
 		case GameManager.BattleStage.EnemyGetCard://敌方抽卡阶段
                 UpdateBattleInfo("敌方抽卡");
